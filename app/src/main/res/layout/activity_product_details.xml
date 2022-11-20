@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <variable
+        name="product"
+        type="com.example.newstore.model.ProductM" />
+    <variable
+        name="img"
+        type="com.example.newstore.adapter.BindAdapter" />
+
+    <variable
+        name="presenter"
+        type="com.example.newstore.ui.details.ProductDetailsActivity" />
+
+    <import type="android.view.View" />
+  </data>
+
+  <RelativeLayout
+      android:id="@+id/rl_details"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_margin="8dp"
+      tools:context=".ui.details.ProductDetailsActivity">
+
+    <ImageView
+        android:id="@+id/ic_back"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:src="@drawable/ic_back" />
+    <TextView
+        android:id="@+id/tv_title_page"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Detail Product"
+        android:textSize="25sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"/>
+
+    <com.denzcoskun.imageslider.ImageSlider
+        android:id="@+id/image_slider"
+        android:layout_width="wrap_content"
+        android:layout_height="300dp"
+        android:layout_below="@+id/tv_title_page"
+        app:iss_auto_cycle="false"
+        app:iss_delay="2"
+        app:iss_period="1500"
+        app:iss_title_background="@color/transparent" />
+
+
+
+
+
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/image_slider"
+        android:layout_marginTop="10dp">
+      <RelativeLayout
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:hint="Title"
+            android:text="@{product.title}"
+            android:textColor="@color/black"
+            android:textSize="28sp" />
+
+
+        <LinearLayout
+            android:id="@+id/ll_color"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="26sp"
+            android:layout_below="@+id/tv_title"
+            >
+
+          <TextView
+              android:id="@+id/click_color"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="Select Color"
+              android:padding="8dp"
+              android:onClick="@{presenter::clickColor}"
+              android:background="@drawable/bg_select_color"
+              android:layout_gravity="center_vertical"
+              android:textColor="@color/white"/>
+
+
+          <net.cachapa.expandablelayout.ExpandableLayout
+              android:id="@+id/expand_color"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="horizontal"
+              android:layout_marginStart="8dp"
+              app:el_duration="1000"
+              app:el_expanded="false">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/rectangle_radius_12"
+                    android:backgroundTint="#FDD835" />
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/rectangle_radius_12"
+                    android:backgroundTint="@color/teal_700" />
+              <ImageView
+                  android:layout_width="32dp"
+                  android:layout_height="32dp"
+                  android:layout_margin="8dp"
+                  android:background="@drawable/rectangle_radius_12"
+                  android:backgroundTint="#2256AF" />
+
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/rectangle_radius_12"
+                    android:backgroundTint="@color/red"
+                    />
+
+            </LinearLayout>
+          </net.cachapa.expandablelayout.ExpandableLayout>
+
+
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_title_des"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ll_color"
+            android:layout_marginTop="12dp"
+            android:hint="Title"
+            android:text="Description:"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+
+        <TextView
+            android:id="@+id/tv_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_title_des"
+            android:hint="Learn Kotlin
+If you're already familiar  want to learn Kotlin, start with these
+ Learn Kotlin If you're already familiar  want to learn Kotlin, start with these
+ Learn Kotlin If want to learn Kotlin, start with these
+ Learn Kotlin already familiar  want to learn Kotlin, start with these
+ Learn Kotlin If you're already familiar  want to learn Kotlin, start with these
+ Learn Kotlin If want to learn Kotlin, start with these already familiar  want to learn Kotlin, start with these
+ Learn Kotlin If you're already fami, start with these
+If you're already familiar  want to learn Kotlin, start with these Kotlin leaning materials.
+"
+            android:text="@{product.description}"
+            android:textSize="16sp" />
+      </RelativeLayout>
+    </androidx.core.widget.NestedScrollView>
+
+
+    <LinearLayout
+        android:id="@+id/ll"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="4dp"
+        android:background="@drawable/bg_navigation_bottom"
+        android:backgroundTint="#1E3440"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+
+      <LinearLayout
+          android:layout_width="150dp"
+          android:layout_height="wrap_content"
+          android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:text="Price"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_price_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_title"
+            android:hint="999 $"
+            android:text="@{product.price + ` $`}"
+            android:textColor="@color/white"
+            android:textSize="22sp" />
+      </LinearLayout>
+
+
+
+        <RelativeLayout
+            android:id="@+id/rl_add_cart"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="6dp"
+            android:gravity="center"
+            android:background="@drawable/bg_navigation_bottom"
+            android:elevation="@dimen/cardview_default_elevation"
+            android:padding="6dp"
+            android:onClick="@{presenter::clickAddCart}">
+
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignParentLeft="true"
+              android:layout_centerVertical="true"
+              android:layout_marginLeft="12dp"
+              android:text="Add To Cart"
+              android:textSize="14sp" />
+
+          <ImageView
+              android:layout_width="32dp"
+              android:layout_height="32dp"
+              android:layout_alignParentRight="true"
+              android:rotation="180"
+              android:src="@drawable/ic_back" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+  </RelativeLayout>
+</layout>

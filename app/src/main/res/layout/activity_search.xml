@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="presenter"
+            type="com.example.newstore.ui.search.SearchActivity" />
+        <variable
+            name="x"
+            type="com.example.newstore.ui.search.SearchActivity" />
+
+    </data>
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/ic_search"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_alignParentLeft="true"
+        android:background="?selectableItemBackgroundBorderless"
+        android:src="@drawable/ic_search"
+        android:visibility="visible" />
+
+    <net.cachapa.expandablelayout.ExpandableLayout
+        android:id="@+id/expandable_layout_hrz"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="4dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="8dp"
+        app:el_duration="1000"
+        app:el_expanded="false"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:orientation="horizontal"
+            >
+
+            <EditText
+                android:id="@+id/et_search"
+                style="@style/TextAppearance.AppCompat.Medium"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:hint="Search..."
+                android:lines="1"
+                android:background="@drawable/bg_search"
+                android:textColor="#000000" />
+            <ImageView
+                android:id="@+id/ic_expand"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="4dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/icons_close"
+                android:visibility="gone"/>
+
+        </RelativeLayout>
+
+
+    </net.cachapa.expandablelayout.ExpandableLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_product_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="36dp" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:visibility="gone" />
+
+    <TextView
+        tools:ignore="ExtraText,HardcodedText"
+        android:id="@+id/error"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@{x.error}"
+        android:textSize="24sp"
+        android:visibility="gone">
+
+    </TextView>
+</RelativeLayout>
+
+
+</layout>
