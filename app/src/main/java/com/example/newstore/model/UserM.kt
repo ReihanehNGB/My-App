@@ -6,7 +6,7 @@ data class UserM(
 
     var id: Int ,
     var name: String = "",
-    var image: String = "",
+    var avatar: String = "",
     var email: String = "",
     var password: String = ""
 ) : Serializable

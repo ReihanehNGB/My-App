@@ -42,7 +42,6 @@ class ProductDetailsActivity : AppCompatActivity() {
             when (it) {
                 is NetworkResult.Loading -> {
 //                    binding.progressBar.visibility = View.VISIBLE
-
                 }
                 is NetworkResult.Success -> {
                     productM = it.data

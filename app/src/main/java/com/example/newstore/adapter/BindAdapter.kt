@@ -1,9 +1,6 @@
 package com.example.newstore.adapter
 
-import android.annotation.SuppressLint
-import android.graphics.drawable.Drawable
 import android.widget.ImageView
-import androidx.annotation.IdRes
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy

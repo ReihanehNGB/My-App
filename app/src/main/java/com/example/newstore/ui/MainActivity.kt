@@ -2,11 +2,17 @@ package com.example.newstore.ui
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.widget.SimpleAdapter
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.RecyclerView
 import com.example.newstore.R
+import com.example.newstore.SwipeToDeleteCallback
 import com.example.newstore.databinding.ActivityMainBinding
+import com.example.newstore.interfaces.RecyclerAdapterListener
 import com.example.newstore.model.ProductM
 import com.example.newstore.ui.cart.CartFragment
 import com.example.newstore.ui.category.CategoryFragment
@@ -16,6 +22,7 @@ import com.example.newstore.ui.home.HomeVM
 import com.example.newstore.ui.profile.ProfileFragment
 import com.example.newstore.ui.search.SearchActivity
 import com.example.newstore.utils.ViewPagerAdapter
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
@@ -31,6 +38,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var categoryfragment: CategoryFragment
     lateinit var profilefragment: ProfileFragment
     lateinit var favoritfragment: FavoriteFragment
+    var mAdapter: RecyclerAdapterListener? = null
     lateinit var searchActivity: SearchActivity
     private val homeVM: HomeVM by viewModels()
     var stateIcon: String = ""
@@ -157,6 +165,8 @@ class MainActivity : AppCompatActivity() {
         selectCart(productM)
         // Do something
     }
+
+
 
 
 

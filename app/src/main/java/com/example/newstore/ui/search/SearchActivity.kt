@@ -108,6 +108,10 @@ class SearchActivity : AppCompatActivity(), RecyclerAdapterListener {
     override fun update(productModel: ProductM) {
     }
 
+    override fun type(name: String) {
+        TODO("Not yet implemented")
+    }
+
 
     fun createRecyclerSearchProduct(newList: MutableList<ProductM>) {
         adapter = ProductAdapter(this, newList, ProductState.Search,this)

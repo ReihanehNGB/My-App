@@ -74,15 +74,8 @@ class ProductAdapter(
                 val favoriteBinding = viewHolder.binding as ProductItemFavoriteBinding
                 favoriteBinding.product = productModel
 
-                Glide.with(context).load(productModel.images[0])
-                    .diskCacheStrategy(DiskCacheStrategy.ALL)
-                    .into(favoriteBinding.ivProduct)
-
                 favoriteBinding.delete.setOnClickListener {
-//                    Toast.makeText(context, "${productModel.title} removed", Toast.LENGTH_SHORT)
-//                        .show()
                     recyclerAdapterListener.update(productModel)
-
                 }
             }
 
@@ -98,9 +91,6 @@ class ProductAdapter(
                         productModel.numbers--
                     }
                 }
-                Glide.with(context).load(productModel.images[0])
-                    .diskCacheStrategy(DiskCacheStrategy.ALL)
-                    .into(cartBinding.ivProduct)
 
                 cartBinding.product = productModel
             }

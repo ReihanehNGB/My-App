@@ -2,9 +2,12 @@ package com.example.newstore.ui.home
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -18,19 +21,21 @@ import com.example.newstore.adapter.PosterAdapter
 import com.example.newstore.adapter.product.ProductAdapter
 import com.example.newstore.adapter.product.ProductState
 import com.example.newstore.databinding.HomeFragmentBinding
+import com.example.newstore.databinding.ProductItemSearchBinding
 import com.example.newstore.interfaces.RecyclerAdapterListener
 import com.example.newstore.model.CategoryM
 import com.example.newstore.model.NetworkResult
 import com.example.newstore.model.PosterM
 import com.example.newstore.model.ProductM
 import com.example.newstore.ui.MainActivity
+import com.example.newstore.ui.details.ProductDetailsActivity
 import com.example.newstore.ui.search.SearchActivity
 import dagger.hilt.android.AndroidEntryPoint
 import java.io.Serializable
 
 
 @AndroidEntryPoint
-class HomeFragment : Fragment(), RecyclerAdapterListener {// close class
+class HomeFragment : Fragment(), RecyclerAdapterListener {//close class// close class
 
 
     lateinit var name: String
@@ -43,6 +48,7 @@ class HomeFragment : Fragment(), RecyclerAdapterListener {// close class
     var posterMS = ArrayList<PosterM>()
     var cateMs = ArrayList<CategoryM>()
     var lProduct: MutableList<ProductM> = ArrayList()
+    var sorted: MutableList<ProductM> = ArrayList()
 
 
     companion object {
@@ -91,7 +97,7 @@ class HomeFragment : Fragment(), RecyclerAdapterListener {// close class
                 }
                 is NetworkResult.Success -> {
                     lProduct = it.data
-                    createRecyclerProduct(it.data)
+                    createRecyclerProduct(lProduct)
                     binding.progressBar.visibility = View.GONE
 
 
@@ -105,6 +111,18 @@ class HomeFragment : Fragment(), RecyclerAdapterListener {// close class
                 else -> {}
             }
 
+        }
+    }
+
+    fun filterCate(l: MutableList<ProductM>, nameClick: String) {
+        l.forEach { it ->
+            if (nameClick == "All Product") {
+                createRecyclerProduct(l)
+            } else {
+                var v = l.filter { it.category.name == nameClick }
+                sorted = v as MutableList<ProductM>
+                createRecyclerProduct(sorted)
+            }
         }
     }
 
@@ -127,6 +145,7 @@ class HomeFragment : Fragment(), RecyclerAdapterListener {// close class
 
 
     }
+
 
     private fun createRecyclerCate() {
         cateadapter = CategoryAdapter(requireContext(), ProductState.CategoryName, cateMs, this)
@@ -165,33 +184,39 @@ class HomeFragment : Fragment(), RecyclerAdapterListener {// close class
     }
 
     private fun provideCateList() {
-
+        cateMs.add(
+            CategoryM(
+                0,
+                "All Product",
+                " "
+            )
+        )
         cateMs.add(
             CategoryM(
                 1,
                 "Clothes",
-                "https://cdn1.iconfinder.com/data/icons/lined-snowboarding/48/a-11-256.png"
+                ""
             )
         )
         cateMs.add(
             CategoryM(
                 2,
-                "Electronics ",
-                "https://cdn4.iconfinder.com/data/icons/48-bubbles/48/36.Watch-512.png"
+                "Electronics",
+                ""
             )
         )
         cateMs.add(
             CategoryM(
                 3,
                 "Furniture",
-                "https://cdn0.iconfinder.com/data/icons/back-to-school-190/512/N_T_1271Artboard_1_copy_13-512.png"
+                ""
             )
         )
         cateMs.add(
             CategoryM(
                 4,
                 "Shoes",
-                "https://cdn1.iconfinder.com/data/icons/lined-snowboarding/48/a-11-256.png"
+                ""
             )
         )
 
@@ -199,28 +224,7 @@ class HomeFragment : Fragment(), RecyclerAdapterListener {// close class
             CategoryM(
                 5,
                 "Others",
-                "https://cdn1.iconfinder.com/data/icons/lined-snowboarding/48/a-11-256.png"
-            )
-        )
-        cateMs.add(
-            CategoryM(
-                1,
-                "Watch ",
-                "https://cdn4.iconfinder.com/data/icons/48-bubbles/48/36.Watch-512.png"
-            )
-        )
-        cateMs.add(
-            CategoryM(
-                2,
-                "Shoes",
-                "https://cdn0.iconfinder.com/data/icons/back-to-school-190/512/N_T_1271Artboard_1_copy_13-512.png"
-            )
-        )
-        cateMs.add(
-            CategoryM(
-                3,
-                "w",
-                "https://cdn1.iconfinder.com/data/icons/lined-snowboarding/48/a-11-256.png"
+                ""
             )
         )
 
@@ -233,6 +237,10 @@ class HomeFragment : Fragment(), RecyclerAdapterListener {// close class
 
     }
 
+    override fun type(name: String) {
+        filterCate(lProduct, name)
+    }
+
     fun intent(myList: MutableList<ProductM>) {
 
         val intent = Intent(context, SearchActivity::class.java)
@@ -242,6 +250,6 @@ class HomeFragment : Fragment(), RecyclerAdapterListener {// close class
 
     }
 
-}//close class
+}
 
 

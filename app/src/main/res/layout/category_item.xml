@@ -6,6 +6,9 @@
         <variable
             name="category"
             type="com.example.newstore.model.CategoryM" />
+        <variable
+            name="img"
+            type="com.example.newstore.adapter.BindAdapter" />
 
         <import type="android.view.View" />
 
@@ -28,6 +31,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
+                app:imageUrl="@{category.image}"
                 android:scaleType="fitXY"/>
 
             <androidx.cardview.widget.CardView

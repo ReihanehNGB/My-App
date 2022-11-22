@@ -22,8 +22,6 @@ class CategoryVM
 
     fun listCategories() {
 
-
-
         viewModelScope.launch {
             categoryRepository.getListCat().collect{
 

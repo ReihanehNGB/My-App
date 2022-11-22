@@ -91,6 +91,10 @@ class CartFragment : Fragment(), RecyclerAdapterListener {//close class
         updateList(productModel)
     }
 
+    override fun type(name: String) {
+        TODO("Not yet implemented")
+    }
+
     fun createRecyclerView(l: MutableList<ProductM>) {
         adapterCart = ProductAdapter(requireContext(), l, ProductState.Cart, this)
         binding.rvProductCart.layoutManager = LinearLayoutManager(requireContext())

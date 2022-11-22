@@ -7,5 +7,7 @@ interface RecyclerAdapterListener {
 
     fun update(productModel: ProductM)
 
+    fun type(name:String)
+
 
 }

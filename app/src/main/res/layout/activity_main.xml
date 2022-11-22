@@ -25,7 +25,7 @@
             android:id="@+id/viewPager"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_above="@+id/ll"
+            android:layout_above="@+id/cv_bottom"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
@@ -40,69 +40,80 @@
 
         </com.example.newstore.utils.CustomViewPager>
 
-        <LinearLayout
-            android:id="@+id/ll"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_bottom"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_alignParentBottom="true"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
-            android:background="@drawable/bg_navigation_bottom"
+            app:cardCornerRadius="32dp"
             android:gravity="center"
+            app:cardElevation="12dp"
+            app:contentPadding="4dp"
             android:backgroundTint="@color/teal_200"
-            android:orientation="horizontal"
-            android:weightSum="5">
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="5"
+                android:gravity="center"
+                android:layout_gravity="center">
 
-            <ImageView
-                android:id="@+id/ic_home"
-                android:layout_width="28dp"
-                android:layout_height="28dp"
-                android:layout_weight="1"
-                android:clickable="true"
-                android:focusable="true"
-                android:onClick="press"
-                android:padding="2dp"
-                android:src="@{state == `SelectedHome` ? @drawable/clicked_home : @drawable/ic_home_bottom}" />
+                <ImageView
+                    android:id="@+id/ic_home"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:onClick="press"
+                    android:padding="2dp"
+                    android:src="@{state == `SelectedHome` ? @drawable/clicked_home : @drawable/ic_home_bottom}" />
 
-            <ImageView
-                android:id="@+id/ic_favorite"
-                android:layout_width="28dp"
-                android:layout_height="28dp"
-                android:layout_weight="1"
-                android:clickable="true"
-                android:padding="2dp"
-                android:src="@{state == `SelectedFavorite` ? @drawable/clicked_fav : @drawable/ic_pressed_favorite}" />
+                <ImageView
+                    android:id="@+id/ic_favorite"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:padding="2dp"
+                    android:src="@{state == `SelectedFavorite` ? @drawable/clicked_fav : @drawable/ic_favorite}" />
 
-            <ImageView
-                android:id="@+id/ic_category"
-                android:layout_width="28dp"
-                android:layout_height="28dp"
-                android:layout_weight="1"
-                android:clickable="true"
-                android:padding="2dp"
-                android:src="@{state == `SelectedCategory` ? @drawable/clicked_home : @drawable/ic_category_buttom}" />
+                <ImageView
+                    android:id="@+id/ic_category"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:padding="2dp"
+                    android:src="@{state == `SelectedCategory` ? @drawable/clicked_category : @drawable/ic_category_buttom}" />
 
 
-            <ImageView
-                android:id="@+id/ic_basket"
-                android:layout_width="28dp"
-                android:layout_height="28dp"
-                android:layout_weight="1"
-                android:clickable="true"
-                android:padding="2dp"
-                android:src="@{state == `SelectedBasket` ? @drawable/clicked_basket : @drawable/ic_basket}" />
+                <ImageView
+                    android:id="@+id/ic_basket"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:padding="2dp"
+                    android:src="@{state == `SelectedBasket` ? @drawable/clicked_basket : @drawable/ic_basket}" />
 
-            <ImageView
-                android:id="@+id/ic_profile"
-                android:layout_width="28dp"
-                android:layout_height="28dp"
-                android:layout_weight="1"
-                android:clickable="true"
-                android:padding="2dp"
-                android:src="@{state == `SelectedProfile` ? @drawable/cliked_profile : @drawable/ic_profile}" />
+                <ImageView
+                    android:id="@+id/ic_profile"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:padding="2dp"
+                    android:src="@{state == `SelectedProfile` ? @drawable/cliked_profile : @drawable/ic_profile}" />
 
-        </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+
 
     </RelativeLayout>
 

@@ -60,7 +60,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_margin="8dp"
-                android:background="@drawable/rectangle_radius_18"
+                android:background="@drawable/rectangle_radius_12"
                 android:backgroundTint="@color/red"
                 android:gravity="center"
                 android:paddingLeft="5dp"
@@ -91,6 +91,7 @@
                         android:hint="Title"
                         android:gravity="center"
                         android:maxLength="8"
+                        android:fontFamily="@font/delmonte"
                         android:text="@{product.title}"
                         android:textColor="@color/black" />
 

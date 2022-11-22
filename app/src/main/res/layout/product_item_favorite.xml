@@ -9,6 +9,10 @@
             name="product"
             type="com.example.newstore.model.ProductM" />
 
+        <variable
+            name="img"
+            type="com.example.newstore.adapter.BindAdapter" />
+
         <import type="android.view.View"/>
     </data>
 
@@ -37,6 +41,7 @@
                     android:layout_width="110dp"
                     android:layout_height="110dp"
                     android:layout_gravity="start"
+                    app:imageUrl="@{product.images[2]}"
                     />
             </FrameLayout>
 

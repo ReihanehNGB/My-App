@@ -95,6 +95,10 @@ class ProductListActivity : AppCompatActivity(), RecyclerAdapterListener {
         TODO("Not yet implemented")
     }
 
+    override fun type(name: String) {
+        TODO("Not yet implemented")
+    }
+
 
 }
 
