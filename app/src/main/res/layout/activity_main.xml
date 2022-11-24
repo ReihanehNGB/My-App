@@ -23,35 +23,24 @@
 
         <com.example.newstore.utils.CustomViewPager
             android:id="@+id/viewPager"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_above="@+id/cv_bottom"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             tools:ignore="MissingClass">
-
-            <ProgressBar
-                android:id="@+id/progressBar"
-                style="?android:attr/progressBarStyleLarge"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true" />
 
         </com.example.newstore.utils.CustomViewPager>
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cv_bottom"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="54dp"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp"
-            app:cardCornerRadius="32dp"
+            android:layout_margin="12dp"
+            app:cardCornerRadius="36dp"
             android:gravity="center"
-            app:cardElevation="12dp"
-            app:contentPadding="4dp"
+            app:cardElevation="18dp"
             android:backgroundTint="@color/teal_200"
             >
             <LinearLayout
@@ -67,10 +56,11 @@
                     android:layout_width="28dp"
                     android:layout_height="28dp"
                     android:layout_weight="1"
-                    android:clickable="true"
                     android:focusable="true"
                     android:onClick="press"
                     android:padding="2dp"
+                    android:backgroundTint="?attr/selectableItemBackgroundBorderless"
+                    android:clickable="true"
                     android:src="@{state == `SelectedHome` ? @drawable/clicked_home : @drawable/ic_home_bottom}" />
 
                 <ImageView
@@ -80,7 +70,8 @@
                     android:layout_weight="1"
                     android:clickable="true"
                     android:padding="2dp"
-                    android:src="@{state == `SelectedFavorite` ? @drawable/clicked_fav : @drawable/ic_favorite}" />
+                    android:src="@{state == `SelectedFavorite` ? @drawable/clicked_fav : @drawable/ic_favorite}"
+                    android:focusable="true" />
 
                 <ImageView
                     android:id="@+id/ic_category"
@@ -106,6 +97,7 @@
                     android:layout_width="28dp"
                     android:layout_height="28dp"
                     android:layout_weight="1"
+                    android:background="?attr/selectableItemBackgroundBorderless"
                     android:clickable="true"
                     android:padding="2dp"
                     android:src="@{state == `SelectedProfile` ? @drawable/cliked_profile : @drawable/ic_profile}" />

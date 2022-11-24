@@ -2,46 +2,39 @@ package com.example.newstore.ui.home
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.PagerSnapHelper
-import androidx.recyclerview.widget.SnapHelper
+import com.denzcoskun.imageslider.constants.ScaleTypes
+import com.denzcoskun.imageslider.models.SlideModel
 import com.example.newstore.R
 import com.example.newstore.adapter.CategoryAdapter
-import com.example.newstore.adapter.PosterAdapter
 import com.example.newstore.adapter.product.ProductAdapter
 import com.example.newstore.adapter.product.ProductState
 import com.example.newstore.databinding.HomeFragmentBinding
-import com.example.newstore.databinding.ProductItemSearchBinding
 import com.example.newstore.interfaces.RecyclerAdapterListener
 import com.example.newstore.model.CategoryM
 import com.example.newstore.model.NetworkResult
 import com.example.newstore.model.PosterM
 import com.example.newstore.model.ProductM
 import com.example.newstore.ui.MainActivity
-import com.example.newstore.ui.details.ProductDetailsActivity
 import com.example.newstore.ui.search.SearchActivity
 import dagger.hilt.android.AndroidEntryPoint
 import java.io.Serializable
 
 
 @AndroidEntryPoint
-class HomeFragment : Fragment(), RecyclerAdapterListener {//close class// close class
+class HomeFragment : Fragment(), RecyclerAdapterListener {
 
 
     lateinit var name: String
     private lateinit var binding: HomeFragmentBinding
     lateinit var adapter: ProductAdapter
-    lateinit var posteradapter: PosterAdapter
     lateinit var cateadapter: CategoryAdapter
 
 
@@ -71,9 +64,17 @@ class HomeFragment : Fragment(), RecyclerAdapterListener {//close class// close 
 
         observe()
 
+
+
 //calling function
         providePosterList()
-        createRecyclerPoster()
+
+        val posterList = ArrayList<SlideModel>()
+        posterMS.forEach {
+            posterList.add(SlideModel(it.image,null,null))
+        }
+        binding.imageSlider.setImageList(posterList)
+//      createRecyclerPoster()
         provideCateList()
         createRecyclerCate()
 
@@ -135,16 +136,14 @@ class HomeFragment : Fragment(), RecyclerAdapterListener {//close class// close 
 
     }
 
-    private fun createRecyclerPoster() {
-        posteradapter = PosterAdapter(requireContext(), posterMS)
-        binding.rvPoster.layoutManager =
-            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-        val snapHelper: SnapHelper = PagerSnapHelper()
-        snapHelper.attachToRecyclerView(binding.rvPoster);
-        binding.rvPoster.adapter = posteradapter
-
-
-    }
+//    private fun createRecyclerPoster() {
+//        posteradapter = PosterAdapter(requireContext(), posterMS)
+//        binding.rvPoster.layoutManager =
+//            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+//        val snapHelper: SnapHelper = PagerSnapHelper()
+//        snapHelper.attachToRecyclerView(binding.rvPoster);
+//        binding.rvPoster.adapter = posteradapter
+//    }
 
 
     private fun createRecyclerCate() {
@@ -176,7 +175,7 @@ class HomeFragment : Fragment(), RecyclerAdapterListener {//close class// close 
 
         posterMS.add(
             PosterM(
-                "https://mashadkala.com/images/thumbs/0188739_3.3.jpeg"
+                "https://content.asos-media.com/-/media/homepages/unisex/generic-hp/black-friday-2022/bf-desktop-generic-hp2_1440x698_de.jpg"
             )
         )
 

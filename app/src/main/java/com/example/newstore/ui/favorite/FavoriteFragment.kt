@@ -73,7 +73,6 @@ class FavoriteFragment : Fragment(), RecyclerAdapterListener {
     }
 
     private fun createRecyclerView(list: MutableList<ProductM>?) {
-
         adapterfav = ProductAdapter(requireContext(), list, ProductState.Favorite,this)
         binding.rvProductFav.layoutManager = LinearLayoutManager(requireContext())
         binding.rvProductFav.adapter = adapterfav

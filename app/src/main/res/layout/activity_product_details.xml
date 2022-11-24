@@ -53,11 +53,6 @@
         app:iss_title_background="@color/transparent" />
 
 
-
-
-
-
-
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

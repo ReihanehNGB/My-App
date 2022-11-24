@@ -28,23 +28,25 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             >
+
             <ImageView
                 android:id="@+id/menu"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
+                android:layout_alignParentRight="true"
                 android:background="@drawable/ellipse"
-                android:src="@drawable/ic_menu"
+                android:clickable="true"
+                android:focusable="true"
                 android:rotation="180"
-                android:layout_alignParentRight="true"/>
-
+                android:src="@drawable/ic_menu" />
 
             <ImageView
                 android:id="@+id/ic_search"
-                android:onClick="@{presenter::search}"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:layout_alignParentLeft="true"
                 android:background="?selectableItemBackgroundBorderless"
+                android:onClick="@{presenter::search}"
                 android:src="@drawable/ic_search"
                 android:visibility="visible" />
 
@@ -119,21 +121,7 @@
 
         </RelativeLayout>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            >
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/hello_fola"/>
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/hi"
-                android:layout_marginStart="4dp"/>
-        </LinearLayout>
+
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
@@ -144,11 +132,17 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv_poster"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    />
+                <com.denzcoskun.imageslider.ImageSlider
+                    android:id="@+id/image_slider"
+                    android:layout_width="wrap_content"
+                    android:layout_height="150dp"
+                    app:iss_auto_cycle="true"
+                    app:iss_delay="2"
+                    android:elevation="@dimen/cardview_default_elevation"
+                    app:iss_period="1500"
+                    app:iss_corner_radius="@integer/material_motion_duration_short_1"
+                    app:iss_title_background="@color/transparent" />
+
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_category"

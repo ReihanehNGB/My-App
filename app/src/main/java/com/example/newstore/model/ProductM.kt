@@ -8,7 +8,7 @@ import java.io.Serializable
 data class ProductM(
     var id: Int,
     var title: String = "",
-    var price: Int,
+    var price: String,
     var description: String = "",
     var category: CategoryM,
     var images: MutableList<String>

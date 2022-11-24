@@ -116,14 +116,7 @@ class SearchActivity : AppCompatActivity(), RecyclerAdapterListener {
     fun createRecyclerSearchProduct(newList: MutableList<ProductM>) {
         adapter = ProductAdapter(this, newList, ProductState.Search,this)
         binding.rvProductList.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false)
-        binding.rvProductList.adapter = adapter
-
-
-    }
-
-
-
-
+        binding.rvProductList.adapter = adapter }
 
     fun searchProduct(str: CharSequence){
         newList.clear()
@@ -131,9 +124,7 @@ class SearchActivity : AppCompatActivity(), RecyclerAdapterListener {
             if (it.title.contains(str.toString(), ignoreCase = true)){
                 newList.add(it)
             }
-
         }
-
         createRecyclerSearchProduct(newList)
 
 

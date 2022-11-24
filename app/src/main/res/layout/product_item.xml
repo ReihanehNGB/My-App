@@ -33,7 +33,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        app:cardCornerRadius="16dp"
+        app:cardCornerRadius="12dp"
         app:cardElevation="10dp"
         app:cardPreventCornerOverlap="false">
 
@@ -89,9 +89,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Title"
-                        android:gravity="center"
-                        android:maxLength="8"
-                        android:fontFamily="@font/delmonte"
+                        android:maxLength="10"
+                        android:fontFamily="@font/helvetica"
                         android:text="@{product.title}"
                         android:textColor="@color/black" />
 
@@ -108,10 +107,9 @@
 
                 <ImageView
                     android:id="@+id/ic_favorite"
-                    android:layout_width="match_parent"
-                    android:layout_height="20dp"
+                    android:layout_width="32dp"
+                    android:layout_height="24dp"
                     android:layout_gravity="center"
-                    android:layout_marginStart="30dp"
                     android:src="@drawable/ic_fav"
                     android:layout_marginTop="6dp"
 

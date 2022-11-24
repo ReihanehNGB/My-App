@@ -45,6 +45,9 @@ class CartFragment : Fragment(), RecyclerAdapterListener {//close class
         binding = DataBindingUtil.inflate(inflater, R.layout.cart_fragment, container, false)
         binding.presenter = this
 
+
+
+
 //        adapterCart = ProductAdapter(requireContext(), null, ProductState.Cart, this)
 
 
@@ -62,7 +65,8 @@ class CartFragment : Fragment(), RecyclerAdapterListener {//close class
 
     private fun totalPrice(selectProduct:MutableList<ProductM>) {
         selectProduct.forEach {
-            totalP += it.price
+
+            totalP += it.price.toInt()
         }
         binding.prc = totalP.toString()
     }

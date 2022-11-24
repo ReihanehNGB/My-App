@@ -30,19 +30,21 @@
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
-            <FrameLayout
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/iv_product"
                 android:layout_width="110dp"
                 android:layout_height="110dp"
-                android:background="@drawable/bg_prdct_cart"
+                app:cardCornerRadius="8dp"
+                android:layout_gravity="start"
                 >
                 <ImageView
-                    android:id="@+id/iv_product"
-                    android:layout_width="110dp"
-                    android:layout_height="110dp"
-                    android:layout_gravity="start"
-                    app:imageUrl="@{product.images[2]}"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    android:src="@{product.images[0]}"
                     />
-            </FrameLayout>
+            </androidx.cardview.widget.CardView>
 
 
 
