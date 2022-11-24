@@ -51,7 +51,7 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="88dp"
                 android:layout_alignParentBottom="true"
                 android:src="@drawable/bg_gradient" />
 
@@ -111,6 +111,10 @@
                     android:layout_height="24dp"
                     android:layout_gravity="center"
                     android:src="@drawable/ic_fav"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:focusable="true"
+                    android:clickable="true"
                     android:layout_marginTop="6dp"
 
                     />

@@ -56,11 +56,11 @@
                     android:layout_width="28dp"
                     android:layout_height="28dp"
                     android:layout_weight="1"
+                    android:background="?attr/selectableItemBackgroundBorderless"
                     android:focusable="true"
+                    android:clickable="true"
                     android:onClick="press"
                     android:padding="2dp"
-                    android:backgroundTint="?attr/selectableItemBackgroundBorderless"
-                    android:clickable="true"
                     android:src="@{state == `SelectedHome` ? @drawable/clicked_home : @drawable/ic_home_bottom}" />
 
                 <ImageView
@@ -68,18 +68,21 @@
                     android:layout_width="28dp"
                     android:layout_height="28dp"
                     android:layout_weight="1"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:focusable="true"
                     android:clickable="true"
                     android:padding="2dp"
                     android:src="@{state == `SelectedFavorite` ? @drawable/clicked_fav : @drawable/ic_favorite}"
-                    android:focusable="true" />
+                     />
 
                 <ImageView
                     android:id="@+id/ic_category"
                     android:layout_width="28dp"
                     android:layout_height="28dp"
                     android:layout_weight="1"
-                    android:clickable="true"
-                    android:padding="2dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:focusable="true"
+                    android:clickable="true"                    android:padding="2dp"
                     android:src="@{state == `SelectedCategory` ? @drawable/clicked_category : @drawable/ic_category_buttom}" />
 
 
@@ -88,8 +91,9 @@
                     android:layout_width="28dp"
                     android:layout_height="28dp"
                     android:layout_weight="1"
-                    android:clickable="true"
-                    android:padding="2dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:focusable="true"
+                    android:clickable="true"                    android:padding="2dp"
                     android:src="@{state == `SelectedBasket` ? @drawable/clicked_basket : @drawable/ic_basket}" />
 
                 <ImageView
@@ -98,9 +102,11 @@
                     android:layout_height="28dp"
                     android:layout_weight="1"
                     android:background="?attr/selectableItemBackgroundBorderless"
+                    android:focusable="true"
                     android:clickable="true"
                     android:padding="2dp"
-                    android:src="@{state == `SelectedProfile` ? @drawable/cliked_profile : @drawable/ic_profile}" />
+                    android:src="@{state == `SelectedProfile` ? @drawable/cliked_profile : @drawable/ic_profile}"
+                    />
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>
