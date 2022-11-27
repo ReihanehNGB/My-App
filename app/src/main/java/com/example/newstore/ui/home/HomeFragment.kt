@@ -10,7 +10,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
 import com.example.newstore.R
 import com.example.newstore.adapter.CategoryAdapter
@@ -38,7 +37,7 @@ class HomeFragment : Fragment(), RecyclerAdapterListener {
     lateinit var cateadapter: CategoryAdapter
 
 
-    var posterMS = ArrayList<PosterM>()
+    private var posterMS = ArrayList<PosterM>()
     var cateMs = ArrayList<CategoryM>()
     var lProduct: MutableList<ProductM> = ArrayList()
     var sorted: MutableList<ProductM> = ArrayList()
@@ -179,7 +178,6 @@ class HomeFragment : Fragment(), RecyclerAdapterListener {
             )
         )
 
-
     }
 
     private fun provideCateList() {
@@ -230,10 +228,13 @@ class HomeFragment : Fragment(), RecyclerAdapterListener {
 
     }
 
-    override fun update(productModel: ProductM) {
-        (activity as MainActivity).selectCart(productModel)
+    override fun updateFav(productModel: ProductM) {
         (activity as MainActivity).selectFav(productModel)
 
+    }
+
+    override fun updateSlc(productModel: ProductM) {
+        (activity as MainActivity).selectCart(productModel)
     }
 
     override fun type(name: String) {
@@ -241,7 +242,6 @@ class HomeFragment : Fragment(), RecyclerAdapterListener {
     }
 
     fun intent(myList: MutableList<ProductM>) {
-
         val intent = Intent(context, SearchActivity::class.java)
         intent.putExtra("myList", myList as Serializable)
         startActivity(intent)

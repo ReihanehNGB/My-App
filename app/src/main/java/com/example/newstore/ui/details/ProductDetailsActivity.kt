@@ -11,6 +11,7 @@ import com.denzcoskun.imageslider.models.SlideModel
 import com.example.newstore.R
 import com.example.newstore.adapter.product.ProductAdapter
 import com.example.newstore.databinding.ActivityProductDetailsBinding
+import com.example.newstore.interfaces.RecyclerAdapterListener
 import com.example.newstore.model.NetworkResult
 import com.example.newstore.model.ProductM
 import com.example.newstore.ui.cart.CartFragment
@@ -26,16 +27,18 @@ class ProductDetailsActivity : AppCompatActivity() {
     lateinit var adapter: ProductAdapter
     private val productDetailsActivityVM: ProductDetailsActivityVM by viewModels()
     var error: String = ""
-    var productM: ProductM? = null
+    var productM: ProductM? =null
     val cartFragment = CartFragment.newInstance()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        initBinding(R.layout.activity_product_details)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_product_details)
+        binding.presenter = this
+
 
         val value = intent.extras?.getString("singleP")
         productDetailsActivityVM.singleProduct("api/v1/products/$value")
-
 
 
         productDetailsActivityVM.homeLiveDataSP.observe(this) {
@@ -46,15 +49,13 @@ class ProductDetailsActivity : AppCompatActivity() {
                 is NetworkResult.Success -> {
                     productM = it.data
                     val imageList = ArrayList<SlideModel>()
-                    productM?.images?.forEach {
+                    productM!!.images.forEach {
                         imageList.add(SlideModel(it, " ", ScaleTypes.CENTER_CROP))
+                        binding.product = productM
+
                     }
                     binding.imageSlider.setImageList(imageList)
                     Toast.makeText(this, "${productM?.title}", Toast.LENGTH_SHORT).show()
-                    binding.product = productM
-
-
-
 
 
 //                    binding.btnSeeMore.setOnClickListener(View.OnClickListener {
@@ -76,7 +77,6 @@ class ProductDetailsActivity : AppCompatActivity() {
 
                 }
                 is NetworkResult.Failure -> {
-                    val error = it.errorMessage
 //                    binding.progressBar.visibility = View.GONE
 //                    binding.error.visibility = View.VISIBLE
 
@@ -87,18 +87,15 @@ class ProductDetailsActivity : AppCompatActivity() {
 
         }//close observe
 
+        binding.rlAddCart.setOnClickListener{
+
+        }
+
 
 
         binding.icBack.setOnClickListener {
             finish()
         }
-    }
-
-
-    private fun initBinding(layout: Int) {
-        binding = DataBindingUtil.setContentView(this, layout)
-        binding.presenter = this
-
     }
 
     fun clickColor(view:View){

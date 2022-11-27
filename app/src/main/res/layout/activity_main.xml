@@ -32,6 +32,8 @@
 
         </com.example.newstore.utils.CustomViewPager>
 
+
+
         <androidx.cardview.widget.CardView
             android:id="@+id/cv_bottom"
             android:layout_width="match_parent"
@@ -82,7 +84,8 @@
                     android:layout_weight="1"
                     android:background="?attr/selectableItemBackgroundBorderless"
                     android:focusable="true"
-                    android:clickable="true"                    android:padding="2dp"
+                    android:clickable="true"
+                    android:padding="2dp"
                     android:src="@{state == `SelectedCategory` ? @drawable/clicked_category : @drawable/ic_category_buttom}" />
 
 

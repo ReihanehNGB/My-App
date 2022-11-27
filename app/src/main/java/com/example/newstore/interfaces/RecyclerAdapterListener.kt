@@ -5,7 +5,10 @@ import com.example.newstore.model.ProductM
 
 interface RecyclerAdapterListener {
 
-    fun update(productModel: ProductM)
+    fun updateFav(productModel: ProductM)
+
+    fun updateSlc(productModel: ProductM)
+
 
     fun type(name:String)
 

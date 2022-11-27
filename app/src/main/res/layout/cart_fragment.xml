@@ -51,12 +51,14 @@
                 android:layout_centerInParent="true"
                 android:layout_marginLeft="86dp"
                 android:text="@{prc}"
+                android:visibility="visible"
                 android:textColor="@color/black" />
 
             <ImageView
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
+                android:visibility="invisible"
                 android:src="@drawable/buynow_btn">
 
             </ImageView>

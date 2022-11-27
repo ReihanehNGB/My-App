@@ -4,8 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.core.content.ContextCompat
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.newstore.R
 import com.example.newstore.adapter.BaseRecyclerAdapter
 import com.example.newstore.databinding.ProductItemBinding
@@ -15,21 +13,23 @@ import com.example.newstore.databinding.ProductItemSearchBinding
 import com.example.newstore.interfaces.RecyclerAdapterListener
 import com.example.newstore.model.ProductM
 import com.example.newstore.ui.details.ProductDetailsActivity
+import org.greenrobot.eventbus.EventBus
 
 class ProductAdapter(
     context: Context?,
     list: List<ProductM?>?,
     private val state: ProductState,
-    private val recyclerAdapterListener: RecyclerAdapterListener
+    private val recyclerAdapterListener: RecyclerAdapterListener?
 ) : BaseRecyclerAdapter<ProductM?>(context, list) {
 
     override fun getRootLayoutId(): Int {
         return when (state) {
             is ProductState.Item -> R.layout.product_item
-            is ProductState.Search -> R.layout.product_item_search
+            is ProductState.Cart ->  R.layout.product_item_cart
             is ProductState.Favorite -> R.layout.product_item_favorite
             else -> {
-                R.layout.product_item_cart
+                R.layout.product_item_search
+
             }
         }
     }
@@ -49,7 +49,7 @@ class ProductAdapter(
                 }
                 itemBinding.icFavorite.setOnClickListener {
 
-                    recyclerAdapterListener?.update(productModel)
+                    recyclerAdapterListener?.updateFav(productModel)
                 }
 
                 itemBinding.product = productModel
@@ -75,12 +75,13 @@ class ProductAdapter(
                 favoriteBinding.product = productModel
 
                 favoriteBinding.delete.setOnClickListener {
-                    recyclerAdapterListener.update(productModel)
+                    recyclerAdapterListener?.updateFav(productModel)
                 }
             }
 
             is ProductState.Cart -> {
                 val cartBinding = viewHolder.binding as ProductItemCartBinding
+
                 cartBinding.tvNumber.text = itemCount.toString()
                 cartBinding.ivPlus.setOnClickListener {
 
@@ -91,7 +92,6 @@ class ProductAdapter(
                         productModel.numbers--
                     }
                 }
-
                 cartBinding.product = productModel
             }
 

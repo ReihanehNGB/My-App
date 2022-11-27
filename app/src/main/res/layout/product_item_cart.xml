@@ -17,17 +17,18 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="120dp"
+        android:layout_height="130dp"
         android:layout_gravity="center"
         android:layout_margin="8dp"
         app:cardCornerRadius="16dp"
-        app:cardElevation="10dp"
+        app:cardElevation="2dp"
+        android:shadowRadius="@integer/material_motion_duration_short_1"
         app:cardBackgroundColor="#F6F6F6"
         app:contentPadding="8dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="120dp"
             android:orientation="horizontal">
 
 
@@ -42,7 +43,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="fitXY"
-                    android:src="@{product.images[0]}"
+                    app:imageUrl="@{product.images[2]}"
                     />
             </androidx.cardview.widget.CardView>
 
@@ -53,48 +54,44 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:layout_height="110dp"
+                android:orientation="vertical"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp">
                 <TextView
                     android:id="@+id/tv_title_product"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@{product.title}"
                     android:hint="name"
-                    android:layout_marginStart="10dp"
-                    android:textAlignment="textStart"
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     android:textStyle="normal" />
 
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:weightSum="2"
                     android:layout_marginTop="32dp">
 
                     <TextView
                         android:id="@+id/final_price_product"
-                        android:layout_width="32dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="32dp"
                         android:layout_marginTop="8dp"
-                        android:layout_gravity="left"
-                        android:layout_weight="1"
+                        android:layout_alignParentLeft="true"
                         android:hint="price"
+                        android:layout_centerVertical="true"
                         android:text="@{product.price + ` $`}"
-                        android:layout_marginStart="10dp"
                         android:textColor="#036C62"
                         android:textSize="12sp"
                         android:textStyle="normal" />
 
-                    <FrameLayout
-                        android:layout_width="wrap_content"
+                    <RelativeLayout
+                        android:layout_width="64dp"
                         android:layout_height="32dp"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginEnd="20dp"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
                         android:background="@drawable/border">
 
 
@@ -105,29 +102,31 @@
                             android:layout_gravity="start"
                             android:gravity="center"
                             android:paddingTop="10dp"
+                            android:layout_alignParentLeft="true"
                             android:src="@drawable/ic_minus" />
 
                         <TextView
                             android:id="@+id/tv_number"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:textColor="@color/black"
+                            android:hint="0"
+                            android:layout_centerInParent="true"
                             android:text="@{product.numbers + ``}"
-                            android:textSize="25sp"/>
+                            android:textColor="@color/black"
+                            android:textSize="18sp" />
 
                         <ImageView
                             android:id="@+id/iv_plus"
                             android:layout_width="24dp"
                             android:layout_height="24dp"
                             android:layout_gravity="end"
+                            android:layout_alignParentRight="true"
                             android:gravity="center"
                             android:paddingTop="10dp"
-                            android:src="@drawable/ic_plus"
-                            />
+                            android:src="@drawable/ic_plus" />
 
-                    </FrameLayout>
-                </LinearLayout>
+                    </RelativeLayout>
+                </RelativeLayout>
             </LinearLayout>
 
 

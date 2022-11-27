@@ -91,7 +91,11 @@ class ProductListActivity : AppCompatActivity(), RecyclerAdapterListener {
 
     }
 
-    override fun update(productModel: ProductM) {
+    override fun updateFav(productModel: ProductM) {
+        TODO("Not yet implemented")
+    }
+
+    override fun updateSlc(productModel: ProductM) {
         TODO("Not yet implemented")
     }
 

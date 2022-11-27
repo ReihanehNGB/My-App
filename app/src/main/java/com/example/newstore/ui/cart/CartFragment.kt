@@ -1,6 +1,5 @@
 package com.example.newstore.ui.cart
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -18,6 +17,9 @@ import com.example.newstore.databinding.CartFragmentBinding
 import com.example.newstore.model.ProductM
 
 import dagger.hilt.android.AndroidEntryPoint
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 import java.util.*
 
 @AndroidEntryPoint
@@ -25,8 +27,9 @@ class CartFragment : Fragment(), RecyclerAdapterListener {//close class
 
     private lateinit var binding: CartFragmentBinding
     private lateinit var adapterCart: ProductAdapter
-    private var selectProduct = ArrayList<ProductM>()
+    private var addCartProduct = ArrayList<ProductM>()
     var totalP: Int = 0
+
 
 
 
@@ -44,6 +47,10 @@ class CartFragment : Fragment(), RecyclerAdapterListener {//close class
 
         binding = DataBindingUtil.inflate(inflater, R.layout.cart_fragment, container, false)
         binding.presenter = this
+
+        adapterCart = ProductAdapter(requireContext(),null,ProductState.Cart,this)
+
+
 
 
 
@@ -73,27 +80,30 @@ class CartFragment : Fragment(), RecyclerAdapterListener {//close class
 
     fun updateList(productModelC: ProductM) {
         val context = requireContext()
-        if (selectProduct.contains(productModelC)) {
+        if (addCartProduct.contains(productModelC)) {
             Toast.makeText(
                 requireContext(),
                 "The product has already been added",
                 Toast.LENGTH_SHORT
             ).show()
-            createRecyclerView(selectProduct)
+            createRecyclerView(addCartProduct)
 
         } else {
-            selectProduct.add(productModelC)
+            addCartProduct.add(productModelC)
             Toast.makeText(context, "Added to carts list", Toast.LENGTH_SHORT).show()
         }
-        totalPrice(selectProduct)
-        createRecyclerView(selectProduct)
-
-
+        createRecyclerView(addCartProduct)
+        totalPrice(addCartProduct)
     }
 
-    override fun update(productModel: ProductM) {
-        updateList(productModel)
+    override fun updateFav(productModel: ProductM) {
+        TODO("Not yet implemented")
     }
+
+    override fun updateSlc(productModel: ProductM) {
+    updateList(productModel)
+    }
+
 
     override fun type(name: String) {
         TODO("Not yet implemented")
@@ -104,6 +114,14 @@ class CartFragment : Fragment(), RecyclerAdapterListener {//close class
         binding.rvProductCart.layoutManager = LinearLayoutManager(requireContext())
         binding.rvProductCart.adapter = adapterCart
     }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun onMessageEvent(productM: ProductM) {
+    }
+
+
+
+
 
 
 

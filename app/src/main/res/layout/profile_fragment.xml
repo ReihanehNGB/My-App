@@ -19,95 +19,115 @@
 
     </data>
 
-    <RelativeLayout
+    <LinearLayout
+        android:id="@+id/ll_fav_frag"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.profile.ProfileFragment">
+        android:layout_margin="10dp"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Favorites"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/montblanc_trial_bold"
+            android:textColor="@color/teal_200"
+            android:textSize="20sp"
+            android:layout_gravity="center_horizontal"
+            tools:ignore="MissingConstraints" />
 
-
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp"
+            tools:context=".ui.profile.ProfileFragment">
 
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cv_profile"
-                android:layout_width="140dp"
-                android:layout_height="140dp"
-                android:layout_centerHorizontal="true"
-                app:cardCornerRadius="100dp"
-                android:layout_margin="20dp"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
                 android:layout_alignParentTop="true"
-                android:elevation="12dp">
+                android:layout_centerHorizontal="true"
+                android:elevation="12dp"
+                app:cardCornerRadius="10dp">
+
                 <ImageView
                     android:id="@+id/iv_profile"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:imageUrl="@{userModel.avatar}"
-                    android:scaleType="fitXY"/>
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    app:imageUrl="@{userModel.avatar}" />
             </androidx.cardview.widget.CardView>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_centerInParent="true"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:orientation="vertical"
-            tools:ignore="UnknownIdInLayout">
-
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Name"
-                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:layout_centerInParent="true"
+                android:layout_below="@+id/cv_profile"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:orientation="vertical"
+                tools:ignore="UnknownIdInLayout">
 
-                />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Name"
+                    android:textStyle="bold"
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="@{userModel.name}" />
+                    />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Email"
-                android:textStyle="bold" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@{userModel.name}" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="@{userModel.email}" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Email"
+                    android:textStyle="bold" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Phone"
-                android:textStyle="bold" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@{userModel.email}" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="+989361318226" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Phone"
+                    android:textStyle="bold" />
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="bottom"
-                android:layout_marginTop="10dp"
-                android:clickable="true"
-                android:gravity="center"
-                android:text="Edit Profile"
-                android:textColor="@color/white" />
-        </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="+989361318226" />
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="bottom"
+                    android:layout_marginTop="10dp"
+                    android:clickable="true"
+                    android:gravity="center"
+                    android:text="Edit Profile"
+                    android:textColor="@color/white" />
+            </LinearLayout>
 
 
 
 
 
-    </RelativeLayout>
+        </RelativeLayout>
+    </LinearLayout>
+
+
 </layout>

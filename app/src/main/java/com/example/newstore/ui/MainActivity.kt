@@ -2,15 +2,10 @@ package com.example.newstore.ui
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.widget.SimpleAdapter
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.databinding.DataBindingUtil
-import androidx.recyclerview.widget.ItemTouchHelper
-import androidx.recyclerview.widget.RecyclerView
 import com.example.newstore.R
-import com.example.newstore.SwipeToDeleteCallback
 import com.example.newstore.databinding.ActivityMainBinding
 import com.example.newstore.interfaces.RecyclerAdapterListener
 import com.example.newstore.model.ProductM
@@ -22,7 +17,6 @@ import com.example.newstore.ui.home.HomeVM
 import com.example.newstore.ui.profile.ProfileFragment
 import com.example.newstore.ui.search.SearchActivity
 import com.example.newstore.utils.ViewPagerAdapter
-import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
@@ -44,7 +38,6 @@ class MainActivity : AppCompatActivity() {
     var stateIcon: String = ""
     var value: String = ""
     private var animate = true
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -156,13 +149,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun selectFav(productModelF: ProductM) {
-        favoritfragment.update(productModelF)
+        favoritfragment.updateFav(productModelF)
 
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun onMessageEvent(productM: ProductM) {
         selectCart(productM)
+
         // Do something
     }
 

@@ -105,7 +105,11 @@ class SearchActivity : AppCompatActivity(), RecyclerAdapterListener {
     }
 
 
-    override fun update(productModel: ProductM) {
+    override fun updateFav(productModel: ProductM) {
+    }
+
+    override fun updateSlc(productModel: ProductM) {
+        TODO("Not yet implemented")
     }
 
     override fun type(name: String) {
