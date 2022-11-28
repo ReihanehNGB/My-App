@@ -168,13 +168,13 @@ class HomeFragment : Fragment(), RecyclerAdapterListener {
         )
         posterMS.add(
             PosterM(
-                "https://mashadkala.com/images/thumbs/0188735_1.jpeg"
+                "https://dkstatics-public.digikala.com/digikala-adservice-banners/582f4fedb448ac8660a7e61ffac62fc58fb99a58_1669205782.jpg?x-oss-process=image/quality,q_95"
             )
         )
 
         posterMS.add(
             PosterM(
-                "https://content.asos-media.com/-/media/homepages/unisex/generic-hp/black-friday-2022/bf-desktop-generic-hp2_1440x698_de.jpg"
+                "https://dkstatics-public.digikala.com/digikala-adservice-banners/42508bdf101d554474de66ba1b52dc257db681bc_1669549904.jpg?x-oss-process=image/quality,q_95"
             )
         )
 

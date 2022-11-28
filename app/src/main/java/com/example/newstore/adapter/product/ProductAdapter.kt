@@ -3,6 +3,7 @@ package com.example.newstore.adapter.product
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.provider.SimPhonebookContract
 import androidx.core.content.ContextCompat
 import com.example.newstore.R
 import com.example.newstore.adapter.BaseRecyclerAdapter
@@ -48,8 +49,12 @@ class ProductAdapter(
                     )
                 }
                 itemBinding.icFavorite.setOnClickListener {
-
+                    itemBinding.stateFav= "true"
                     recyclerAdapterListener?.updateFav(productModel)
+                    itemBinding.icFavorite.setOnClickListener {
+                        itemBinding.stateFav= "false"
+                        recyclerAdapterListener?.updateFav(productModel)
+                    }
                 }
 
                 itemBinding.product = productModel

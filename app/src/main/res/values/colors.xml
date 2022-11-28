@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
+    <color name="purple_100">#EDF9F3</color>
     <color name="purple_200">#DEF5E5</color>
     <color name="purple_500">#BCEAD5</color>
     <color name="purple_700">#9ED5C5</color>

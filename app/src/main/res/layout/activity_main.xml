@@ -86,7 +86,8 @@
                     android:focusable="true"
                     android:clickable="true"
                     android:padding="2dp"
-                    android:src="@{state == `SelectedCategory` ? @drawable/clicked_category : @drawable/ic_category_buttom}" />
+                    android:src="@{state == `SelectedCategory` ? @drawable/clicked_category : @drawable/ic_category_buttom}"
+                    />
 
 
                 <ImageView
@@ -96,7 +97,8 @@
                     android:layout_weight="1"
                     android:background="?attr/selectableItemBackgroundBorderless"
                     android:focusable="true"
-                    android:clickable="true"                    android:padding="2dp"
+                    android:clickable="true"
+                    android:padding="2dp"
                     android:src="@{state == `SelectedBasket` ? @drawable/clicked_basket : @drawable/ic_basket}" />
 
                 <ImageView

@@ -13,11 +13,12 @@
         <entry key="..\:/Users/Android/AndroidStudioProjects/newstore/app/src/main/res/drawable/radios_10.xml" value="0.1785" />
         <entry key="..\:/Users/Android/AndroidStudioProjects/newstore/app/src/main/res/drawable/rectangle_radius_12.xml" value="0.1785" />
         <entry key="..\:/Users/Android/AndroidStudioProjects/newstore/app/src/main/res/drawable/rectangle_radius_16.xml" value="0.1785" />
+        <entry key="..\:/Users/Android/AndroidStudioProjects/newstore/app/src/main/res/drawable/rectangle_radius_18.xml" value="0.173" />
         <entry key="..\:/Users/Android/AndroidStudioProjects/newstore/app/src/main/res/drawable/ripple.xml" value="0.173" />
         <entry key="..\:/Users/Android/AndroidStudioProjects/newstore/app/src/main/res/drawable/rounded_shape.xml" value="0.1785" />
         <entry key="..\:/Users/Android/AndroidStudioProjects/newstore/app/src/main/res/layout-v26/product_item.xml" value="0.271875" />
         <entry key="..\:/Users/Android/AndroidStudioProjects/newstore/app/src/main/res/layout/activity_login.xml" value="0.27291666666666664" />
-        <entry key="..\:/Users/Android/AndroidStudioProjects/newstore/app/src/main/res/layout/activity_main.xml" value="0.18" />
+        <entry key="..\:/Users/Android/AndroidStudioProjects/newstore/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/Android/AndroidStudioProjects/newstore/app/src/main/res/layout/activity_product.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/Android/AndroidStudioProjects/newstore/app/src/main/res/layout/activity_product_details.xml" value="0.33" />
         <entry key="..\:/Users/Android/AndroidStudioProjects/newstore/app/src/main/res/layout/activity_product_list.xml" value="0.27291666666666664" />
@@ -31,11 +32,11 @@
         <entry key="..\:/Users/Android/AndroidStudioProjects/newstore/app/src/main/res/layout/home_fragment.xml" value="0.33" />
         <entry key="..\:/Users/Android/AndroidStudioProjects/newstore/app/src/main/res/layout/image_slider_item.xml" value="0.271875" />
         <entry key="..\:/Users/Android/AndroidStudioProjects/newstore/app/src/main/res/layout/poster_item.xml" value="0.1287037037037037" />
-        <entry key="..\:/Users/Android/AndroidStudioProjects/newstore/app/src/main/res/layout/product_item.xml" value="0.33" />
+        <entry key="..\:/Users/Android/AndroidStudioProjects/newstore/app/src/main/res/layout/product_item.xml" value="0.1" />
         <entry key="..\:/Users/Android/AndroidStudioProjects/newstore/app/src/main/res/layout/product_item_cart.xml" value="0.25" />
         <entry key="..\:/Users/Android/AndroidStudioProjects/newstore/app/src/main/res/layout/product_item_favorite.xml" value="0.5" />
         <entry key="..\:/Users/Android/AndroidStudioProjects/newstore/app/src/main/res/layout/product_item_search.xml" value="0.22" />
-        <entry key="..\:/Users/Android/AndroidStudioProjects/newstore/app/src/main/res/layout/profile_fragment.xml" value="0.25" />
+        <entry key="..\:/Users/Android/AndroidStudioProjects/newstore/app/src/main/res/layout/profile_fragment.xml" value="0.22" />
       </map>
     </option>
   </component>

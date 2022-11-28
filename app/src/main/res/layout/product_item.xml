@@ -23,6 +23,10 @@
             name="img"
             type="com.example.newstore.adapter.BindAdapter" />
 
+        <variable
+            name="stateFav"
+            type="String"/>
+
         <import type="android.view.View" />
     </data>
 
@@ -110,8 +114,7 @@
                     android:layout_width="32dp"
                     android:layout_height="24dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/ic_fav"
-                    style="?android:attr/borderlessButtonStyle"
+                    android:src="@{stateFav == `true` ? @drawable/ic_clicked_fav_item : @drawable/ic_fav}"
                     android:background="?attr/selectableItemBackgroundBorderless"
                     android:focusable="true"
                     android:clickable="true"
