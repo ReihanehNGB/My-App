@@ -3,8 +3,9 @@ package com.example.newstore.adapter.product
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.provider.SimPhonebookContract
 import androidx.core.content.ContextCompat
+import com.daimajia.swipe.SwipeLayout
+import com.daimajia.swipe.SwipeLayout.SwipeListener
 import com.example.newstore.R
 import com.example.newstore.adapter.BaseRecyclerAdapter
 import com.example.newstore.databinding.ProductItemBinding
@@ -14,7 +15,7 @@ import com.example.newstore.databinding.ProductItemSearchBinding
 import com.example.newstore.interfaces.RecyclerAdapterListener
 import com.example.newstore.model.ProductM
 import com.example.newstore.ui.details.ProductDetailsActivity
-import org.greenrobot.eventbus.EventBus
+
 
 class ProductAdapter(
     context: Context?,
@@ -82,6 +83,29 @@ class ProductAdapter(
                 favoriteBinding.delete.setOnClickListener {
                     recyclerAdapterListener?.updateFav(productModel)
                 }
+
+                favoriteBinding.swipe.setShowMode(SwipeLayout.ShowMode.LayDown);
+                favoriteBinding.swipe.addDrag(SwipeLayout.DragEdge.Left, favoriteBinding.bottomWrapper)
+
+                favoriteBinding.swipe.addSwipeListener(object : SwipeListener {
+                    override fun onClose(layout: SwipeLayout) {
+                        //when the SurfaceView totally cover the BottomView.
+                    }
+
+                    override fun onUpdate(layout: SwipeLayout, leftOffset: Int, topOffset: Int) {
+                        //you are swiping.
+                    }
+
+                    override fun onStartOpen(layout: SwipeLayout) {}
+                    override fun onOpen(layout: SwipeLayout) {
+                        //when the BottomView totally show.
+                    }
+
+                    override fun onStartClose(layout: SwipeLayout) {}
+                    override fun onHandRelease(layout: SwipeLayout, xvel: Float, yvel: Float) {
+                        //when user's hand released.
+                    }
+                })
             }
 
             is ProductState.Cart -> {

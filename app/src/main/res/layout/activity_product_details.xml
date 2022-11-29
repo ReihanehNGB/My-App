@@ -31,32 +31,46 @@
         android:id="@+id/ic_back"
         android:layout_width="32dp"
         android:layout_height="32dp"
+        android:padding="6dp"
         android:src="@drawable/ic_back" />
     <TextView
         android:id="@+id/tv_title_page"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Detail Product"
-        android:textSize="25sp"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:layout_centerHorizontal="true"/>
+        android:text="Detali Product"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/montblanc_trial_bold"
+        android:textColor="@color/teal_200"
+        android:textSize="20sp"
+        android:layout_gravity="center"
+        />
 
-    <com.denzcoskun.imageslider.ImageSlider
-        android:id="@+id/image_slider"
-        android:layout_width="wrap_content"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_img_slider"
+        android:layout_width="match_parent"
         android:layout_height="300dp"
         android:layout_below="@+id/tv_title_page"
-        app:iss_auto_cycle="false"
-        app:iss_delay="2"
-        app:iss_period="1500"
-        app:iss_title_background="@color/transparent" />
+        app:cardCornerRadius="40dp"
+        android:layout_margin="12dp"
+        android:elevation="6dp"
+        >
+      <com.denzcoskun.imageslider.ImageSlider
+          android:id="@+id/image_slider"
+          android:layout_width="wrap_content"
+          android:layout_height="300dp"
+          app:iss_auto_cycle="false"
+          app:iss_delay="2"
+          app:iss_period="1500"
+          app:iss_title_background="@color/transparent" />
+    </androidx.cardview.widget.CardView>
+
+
 
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/image_slider"
+        android:layout_below="@+id/cv_img_slider"
         android:layout_marginTop="10dp">
       <RelativeLayout
           android:layout_width="wrap_content"
@@ -69,6 +83,7 @@
             android:layout_marginTop="6dp"
             android:hint="Title"
             android:text="@{product.title}"
+            android:fontFamily="@font/montblanc_trial_bold"
             android:textColor="@color/black"
             android:textSize="28sp" />
 
@@ -113,6 +128,12 @@
                     android:layout_margin="8dp"
                     android:background="@drawable/rectangle_radius_12"
                     android:backgroundTint="#FDD835" />
+              <ImageView
+                  android:layout_width="32dp"
+                  android:layout_height="32dp"
+                  android:layout_margin="8dp"
+                  android:background="@drawable/rectangle_radius_12"
+                  android:backgroundTint="#714A6B" />
                 <ImageView
                     android:layout_width="32dp"
                     android:layout_height="32dp"
@@ -151,6 +172,7 @@
             android:hint="Title"
             android:text="Description:"
             android:textColor="@color/black"
+            android:fontFamily="@font/montblanc_trial_regular"
             android:textSize="18sp" />
 
 
@@ -159,6 +181,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_title_des"
+            android:fontFamily="@font/montblanc_trial_regular"
             android:hint="Learn Kotlin
 If you're already familiar  want to learn Kotlin, start with these
  Learn Kotlin If you're already familiar  want to learn Kotlin, start with these
@@ -175,7 +198,7 @@ If you're already familiar  want to learn Kotlin, start with these Kotlin leanin
     </androidx.core.widget.NestedScrollView>
 
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/ll"
         android:layout_width="match_parent"
         android:layout_height="60dp"
@@ -184,68 +207,57 @@ If you're already familiar  want to learn Kotlin, start with these Kotlin leanin
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="4dp"
         android:background="@drawable/bg_navigation_bottom"
-        android:backgroundTint="#1E3440"
+        android:backgroundTint="@color/teal_200"
         android:gravity="center"
         android:orientation="horizontal">
 
 
-      <LinearLayout
-          android:layout_width="150dp"
-          android:layout_height="wrap_content"
-          android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/tv_price"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="left"
-            android:text="Price"
-            android:textColor="@color/white"
-            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/tv_price_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_title"
+            android:layout_alignParentLeft="true"
             android:hint="999 $"
+            android:layout_centerVertical="true"
             android:text="@{product.price + ` $`}"
+            android:layout_marginStart="22dp"
+            android:fontFamily="@font/montblanc_trial_regular"
             android:textColor="@color/white"
-            android:textSize="22sp" />
-      </LinearLayout>
+            android:textSize="32sp" />
 
 
 
-        <RelativeLayout
+
+        <androidx.cardview.widget.CardView
             android:id="@+id/rl_add_cart"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
             android:layout_marginTop="6dp"
+            android:layout_centerVertical="true"
             android:layout_marginBottom="6dp"
-            android:gravity="center"
-            android:background="@drawable/bg_navigation_bottom"
-            android:elevation="@dimen/cardview_default_elevation"
-            android:padding="6dp"
+            android:layout_gravity="center"
+            android:layout_marginEnd="12dp"
+            app:cardCornerRadius="22dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:focusable="true"
+            android:clickable="true"
             android:onClick="@{presenter::clickAddCart}">
 
           <TextView
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
-              android:layout_alignParentLeft="true"
-              android:layout_centerVertical="true"
-              android:layout_marginLeft="12dp"
+              android:fontFamily="@font/montblanc_trial_bold"
               android:text="Add To Cart"
-              android:textSize="14sp" />
+              android:layout_margin="6dp"
+              android:layout_gravity="center"
+              android:textSize="16sp" />
 
-          <ImageView
-              android:layout_width="32dp"
-              android:layout_height="32dp"
-              android:layout_alignParentRight="true"
-              android:rotation="180"
-              android:src="@drawable/ic_back" />
-        </RelativeLayout>
 
-    </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+    </RelativeLayout>
 
 
   </RelativeLayout>

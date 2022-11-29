@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.MotionEvent
 import androidx.viewpager.widget.ViewPager
+import com.example.newstore.ui.favorite.FavoriteFragment
 
 class CustomViewPager : ViewPager {
     private var isPagingEnabled = true
@@ -27,6 +28,8 @@ class CustomViewPager : ViewPager {
     fun setPagingEnabled(b: Boolean) {
         isPagingEnabled = b
     }
+
+
 
 
 }

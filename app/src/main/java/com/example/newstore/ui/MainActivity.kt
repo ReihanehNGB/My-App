@@ -1,6 +1,7 @@
 package com.example.newstore.ui
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -16,6 +17,7 @@ import com.example.newstore.ui.home.HomeFragment
 import com.example.newstore.ui.home.HomeVM
 import com.example.newstore.ui.profile.ProfileFragment
 import com.example.newstore.ui.search.SearchActivity
+import com.example.newstore.utils.CustomViewPager
 import com.example.newstore.utils.ViewPagerAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import org.greenrobot.eventbus.EventBus
@@ -32,6 +34,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var categoryfragment: CategoryFragment
     lateinit var profilefragment: ProfileFragment
     lateinit var favoritfragment: FavoriteFragment
+    var customViewPager:CustomViewPager = CustomViewPager(this)
     var mAdapter: RecyclerAdapterListener? = null
     lateinit var searchActivity: SearchActivity
     private val homeVM: HomeVM by viewModels()
@@ -55,8 +58,8 @@ class MainActivity : AppCompatActivity() {
         cartfragment = CartFragment.newInstance()
         categoryfragment = CategoryFragment.newInstance()
         favoritfragment = FavoriteFragment.newInstance()
-
         profilefragment = ProfileFragment.newInstance()
+
 
         setupViewPager()
 
@@ -87,21 +90,18 @@ class MainActivity : AppCompatActivity() {
     private fun listener() {
 
         binding.icHome.setOnClickListener {
-//            loadGif(R.drawable.home_animate,binding.icHome)
             binding.viewPager.currentItem = 0
             stateIcon = "SelectedHome"
             binding.state = stateIcon
         }
 
         binding.icFavorite.setOnClickListener {
-//            loadGif(R.drawable.favorite_animate,binding.icFavorite)
             binding.viewPager.currentItem = 1
             stateIcon = "SelectedFavorite"
             binding.state = stateIcon
         }
 
         binding.icCategory.setOnClickListener {
-//            loadGif(R.drawable.category_animate,binding.icCategory)
             binding.viewPager.currentItem = 2
             stateIcon = "SelectedCategory"
             binding.state = stateIcon
@@ -128,6 +128,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupViewPager() {
         val mAdapter = ViewPagerAdapter(supportFragmentManager)
+
+
+
         mAdapter.apply {
             addFragment(homrfragment)
             addFragment(favoritfragment)
@@ -138,10 +141,13 @@ class MainActivity : AppCompatActivity() {
 
         }
         binding.viewPager.apply {
+            customViewPager.setPagingEnabled(false)
             adapter = mAdapter
             offscreenPageLimit = mAdapter.count
             currentItem = 0
+
         }
+
     }
 
     fun selectCart(productModelC: ProductM) {

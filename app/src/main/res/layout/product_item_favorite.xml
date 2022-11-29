@@ -20,112 +20,150 @@
         <import type="android.view.View"/>
     </data>
 
-    <androidx.cardview.widget.CardView
+
+    <com.daimajia.swipe.SwipeLayout
+        android:id="@+id/swipe"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
         android:layout_margin="8dp"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="2dp"
-        app:cardBackgroundColor="@color/pastel_blue"
-        app:contentPadding="8dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
+        >
+        <!-- Bottom View Start-->
+        <RelativeLayout
+            android:id="@+id/bottom_wrapper"
+            android:layout_width="64dp"
+            android:weightSum="1"
             android:layout_height="match_parent"
+            android:background="@drawable/rectangle_radius_18"
             android:orientation="horizontal">
+            <!--What you want to show-->
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="110dp"
-                android:layout_height="110dp"
-                android:layout_gravity="left"
-                app:cardCornerRadius="12dp"
-                android:elevation="2dp"
-                >
-                <ImageView
-                    android:id="@+id/iv_product"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:imageUrl="@{product.images[2]}"
-                    android:scaleType="centerCrop"
-                    />
-            </androidx.cardview.widget.CardView>
+            <ImageView
+                android:id="@+id/delete"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:focusable="true"
+                android:layout_margin="8dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:src="@drawable/ic_delete" />
+        </RelativeLayout>
+        <!-- Bottom View End-->
+
+        <!-- Surface View Start -->
+        <LinearLayout
+            android:padding="10dp"
+            android:background="#ffffff"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <!--What you want to show in SurfaceView-->
+        </LinearLayout>
+        <!-- Surface View End -->
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="2dp"
+            app:cardBackgroundColor="#F6F6F6"
+            app:contentPadding="8dp">
 
 
 
-
-
-
-
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/tv_title_product"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:hint="name"
-                    android:text="@{product.title}"
-                    android:textAlignment="textStart"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="normal" />
+                <androidx.cardview.widget.CardView
+                    android:layout_width="110dp"
+                    android:layout_height="110dp"
+                    android:layout_gravity="left"
+                    app:cardCornerRadius="12dp"
+                    android:elevation="2dp"
+                    >
+                    <ImageView
+                        android:id="@+id/iv_product"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:imageUrl="@{product.images[2]}"
+                        android:scaleType="centerCrop"
+                        />
+                </androidx.cardview.widget.CardView>
 
-                <LinearLayout
+
+
+
+
+
+
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="32dp"
-                    android:layout_centerVertical="true">
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/final_price_product"
+                        android:id="@+id/tv_title_product"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:layout_gravity="start"
-                        android:hint="price"
-                        android:text="@{product.price + ` $`}"
                         android:layout_marginStart="10dp"
-                        android:textColor="#036C62"
+                        android:hint="name"
+                        android:text="@{product.title}"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/black"
                         android:textSize="16sp"
                         android:textStyle="normal" />
 
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="32dp"
+                        android:layout_centerVertical="true">
 
-                </LinearLayout>
-
-
-
-
-                    <ImageView
-                        android:id="@+id/delete"
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
-                        android:padding="4dp"
-                        android:layout_alignParentBottom="true"
-                        android:layout_alignParentRight="true"
-                        android:background="?attr/selectableItemBackgroundBorderless"
-                        android:focusable="true"
-                        android:clickable="true"
-                        android:src="@drawable/ic_delete" />
-
-            </RelativeLayout>
-
-
+                        <TextView
+                            android:id="@+id/final_price_product"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:layout_gravity="start"
+                            android:hint="price"
+                            android:text="@{product.price + ` $`}"
+                            android:layout_marginStart="10dp"
+                            android:textColor="#036C62"
+                            android:textSize="16sp"
+                            android:textStyle="normal" />
 
 
-
-
-
-        </LinearLayout>
+                    </LinearLayout>
 
 
 
 
+                </RelativeLayout>
 
 
-    </androidx.cardview.widget.CardView>
+
+
+
+
+
+            </LinearLayout>
+
+
+
+
+
+
+        </androidx.cardview.widget.CardView>
+    </com.daimajia.swipe.SwipeLayout>
+
+
+
+
+
+
 </layout>
