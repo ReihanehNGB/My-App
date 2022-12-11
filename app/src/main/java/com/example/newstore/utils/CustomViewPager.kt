@@ -7,7 +7,7 @@ import androidx.viewpager.widget.ViewPager
 import com.example.newstore.ui.favorite.FavoriteFragment
 
 class CustomViewPager : ViewPager {
-    private var isPagingEnabled = true
+    private var isPagingEnabled = false
 
     constructor(context: Context?) : super(context!!) {}
     constructor(context: Context?, attrs: AttributeSet?) : super(

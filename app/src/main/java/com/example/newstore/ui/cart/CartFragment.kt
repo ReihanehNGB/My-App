@@ -100,8 +100,8 @@ class CartFragment : Fragment(), RecyclerAdapterListener {//close class
         TODO("Not yet implemented")
     }
 
-    override fun updateSlc(productModel: ProductM) {
-    updateList(productModel)
+    override fun updateSlc(productModel: ProductM,number: Int) {
+        deletSlc(productModel,number)
     }
 
 
@@ -117,6 +117,15 @@ class CartFragment : Fragment(), RecyclerAdapterListener {//close class
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun onMessageEvent(productM: ProductM) {
+    }
+
+
+
+    fun deletSlc(productModel: ProductM,number: Int){
+        if (number==0){
+            addCartProduct.remove(productModel)
+            createRecyclerView(addCartProduct)
+        }
     }
 
 

@@ -109,7 +109,7 @@
                             android:id="@+id/tv_number"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:hint="0"
+                            android:hint="1"
                             android:layout_centerInParent="true"
                             android:text="@{product.numbers + ``}"
                             android:textColor="@color/black"

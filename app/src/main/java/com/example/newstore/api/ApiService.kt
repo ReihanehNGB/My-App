@@ -1,11 +1,11 @@
 package com.example.newstore.api
 
+import com.example.newstore.model.UserM
 import com.google.gson.JsonArray
 import com.google.gson.JsonObject
-import retrofit2.Call
-import retrofit2.http.GET
-import retrofit2.http.Path
-import retrofit2.http.Url
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.http.*
 
 
 interface ApiService {
@@ -33,13 +33,15 @@ interface ApiService {
     @GET
     suspend fun singleU(@Url url: String?): JsonObject
 
+    @FormUrlEncoded
+    @POST("api/v1/users/")
+    fun updateUser(
+        @Field ("name") name: String,
+        @Field ("email") email: String,
+        @Field ("password") password: String,
+        @Field ("avatar") image: String
 
-
-
-
-
-
-
+    ): JsonObject
 
 
 

@@ -34,13 +34,11 @@ class MainActivity : AppCompatActivity() {
     lateinit var categoryfragment: CategoryFragment
     lateinit var profilefragment: ProfileFragment
     lateinit var favoritfragment: FavoriteFragment
-    var customViewPager:CustomViewPager = CustomViewPager(this)
     var mAdapter: RecyclerAdapterListener? = null
     lateinit var searchActivity: SearchActivity
     private val homeVM: HomeVM by viewModels()
-    var stateIcon: String = ""
+    var stateIcon: String = "SelectedHome"
     var value: String = ""
-    private var animate = true
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,10 +47,7 @@ class MainActivity : AppCompatActivity() {
 
         initBinding(R.layout.activity_main)
 
-
-
         value = intent.extras?.getString("SingleU").toString()
-
 
         homrfragment = HomeFragment.newInstance()
         cartfragment = CartFragment.newInstance()
@@ -60,17 +55,8 @@ class MainActivity : AppCompatActivity() {
         favoritfragment = FavoriteFragment.newInstance()
         profilefragment = ProfileFragment.newInstance()
 
-
         setupViewPager()
-
         listener()
-
-
-
-
-
-
-
 
     }
 
@@ -131,6 +117,8 @@ class MainActivity : AppCompatActivity() {
 
 
 
+
+
         mAdapter.apply {
             addFragment(homrfragment)
             addFragment(favoritfragment)
@@ -141,7 +129,6 @@ class MainActivity : AppCompatActivity() {
 
         }
         binding.viewPager.apply {
-            customViewPager.setPagingEnabled(false)
             adapter = mAdapter
             offscreenPageLimit = mAdapter.count
             currentItem = 0
@@ -158,6 +145,7 @@ class MainActivity : AppCompatActivity() {
         favoritfragment.updateFav(productModelF)
 
     }
+
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun onMessageEvent(productM: ProductM) {

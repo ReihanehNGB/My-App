@@ -14,9 +14,13 @@ import com.example.newstore.adapter.product.ProductState
 import com.example.newstore.databinding.FavoriteFragmentBinding
 import com.example.newstore.interfaces.RecyclerAdapterListener
 import com.example.newstore.model.ProductM
+import com.example.newstore.utils.showToast
 import dagger.hilt.android.AndroidEntryPoint
 import org.greenrobot.eventbus.EventBus
 import java.util.*
+
+
+
 
 
 @AndroidEntryPoint
@@ -53,21 +57,18 @@ class FavoriteFragment : Fragment(), RecyclerAdapterListener {
 
         if (selectedProduct.contains(productModel)) {
             selectedProduct.remove(productModel)
-            Toast.makeText(
-                requireContext(),
-                "The ${productModel.title} removed to favorites list !",
-                Toast.LENGTH_SHORT
-            ).show()
+            requireContext().showToast("The ${productModel.title} removed to favorites list !")
             createRecyclerView(selectedProduct)
         } else {
             selectedProduct.add(productModel)
-            Toast.makeText(context, "Added to favorites list", Toast.LENGTH_SHORT).show()
+            requireContext().showToast("Added to favorites list")
+
             createRecyclerView(selectedProduct)
         }
 
     }
 
-    override fun updateSlc(productModel: ProductM) {
+    override fun updateSlc(productModel: ProductM, number: Int) {
         TODO("Not yet implemented")
     }
 

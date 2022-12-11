@@ -30,9 +30,13 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         initBinding(R.layout.activity_login)
+
+        binding.skip.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
         checkLoginUser()
-
-
         loginVM.listUser()
         observe()
 
@@ -64,8 +68,8 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun checkLoginUser(){
-        var stateLogin = MUtils.checkLogin(this,"Is Login")
-        if (stateLogin == true){
+        val stateLogin = MUtils.checkLogin(this,"Is Login")
+        if (stateLogin){
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
@@ -77,7 +81,7 @@ class LoginActivity : AppCompatActivity() {
         userList.forEach {
             if (it.name == (binding.etEmail.text.toString()) && it.password == (binding.etPassword.text.toString())) {
                 MUtils.saveStateLogin(this,"Is Login",true)
-                MUtils.saveToShared(this, "SingleU", it.id.toString())
+                MUtils.saveToShared(this, "SingleU", it.id)
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
                 finish()

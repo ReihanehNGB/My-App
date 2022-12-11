@@ -51,7 +51,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
-                app:imageUrl="@{product.images[2]}" />
+                app:imageUrl="@{product.images[0]}" />
 
             <ImageView
                 android:layout_width="match_parent"

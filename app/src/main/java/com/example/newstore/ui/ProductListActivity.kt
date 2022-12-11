@@ -95,7 +95,7 @@ class ProductListActivity : AppCompatActivity(), RecyclerAdapterListener {
         TODO("Not yet implemented")
     }
 
-    override fun updateSlc(productModel: ProductM) {
+    override fun updateSlc(productModel: ProductM, number: Int) {
         TODO("Not yet implemented")
     }
 

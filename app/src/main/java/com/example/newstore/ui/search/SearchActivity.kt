@@ -7,12 +7,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.newstore.R
 import com.example.newstore.adapter.product.ProductAdapter
 import com.example.newstore.adapter.product.ProductState
 import com.example.newstore.databinding.ActivitySearchBinding
 import com.example.newstore.interfaces.RecyclerAdapterListener
 import com.example.newstore.model.ProductM
+import com.example.newstore.utils.disableItemAnimator
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -108,7 +110,7 @@ class SearchActivity : AppCompatActivity(), RecyclerAdapterListener {
     override fun updateFav(productModel: ProductM) {
     }
 
-    override fun updateSlc(productModel: ProductM) {
+    override fun updateSlc(productModel: ProductM, number:Int) {
         TODO("Not yet implemented")
     }
 
@@ -118,9 +120,12 @@ class SearchActivity : AppCompatActivity(), RecyclerAdapterListener {
 
 
     fun createRecyclerSearchProduct(newList: MutableList<ProductM>) {
+        binding.rvProductList.disableItemAnimator()
         adapter = ProductAdapter(this, newList, ProductState.Search,this)
         binding.rvProductList.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false)
-        binding.rvProductList.adapter = adapter }
+        binding.rvProductList.adapter = adapter
+
+    }
 
     fun searchProduct(str: CharSequence){
         newList.clear()
@@ -130,8 +135,6 @@ class SearchActivity : AppCompatActivity(), RecyclerAdapterListener {
             }
         }
         createRecyclerSearchProduct(newList)
-
-
     }
 
 }

@@ -4,7 +4,7 @@ import java.io.Serializable
 
 data class UserM(
 
-    var id: Int ,
+    var id: String ,
     var name: String = "",
     var avatar: String = "",
     var email: String = "",

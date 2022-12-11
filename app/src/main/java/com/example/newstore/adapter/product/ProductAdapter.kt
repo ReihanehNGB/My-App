@@ -38,7 +38,7 @@ class ProductAdapter(
 
     override fun onBind(viewHolder: BaseViewHolder, position: Int) {
         val productModel = viewHolder.getData(position) as ProductM
-
+        var x = false
         when (state) {
             is ProductState.Item -> {
                 val itemBinding = viewHolder.binding as ProductItemBinding
@@ -52,9 +52,10 @@ class ProductAdapter(
                 itemBinding.icFavorite.setOnClickListener {
                     itemBinding.stateFav= "true"
                     recyclerAdapterListener?.updateFav(productModel)
+
                     itemBinding.icFavorite.setOnClickListener {
-                        itemBinding.stateFav= "false"
-                        recyclerAdapterListener?.updateFav(productModel)
+                            itemBinding.stateFav= "false"
+                            recyclerAdapterListener?.updateFav(productModel)
                     }
                 }
 
@@ -84,7 +85,7 @@ class ProductAdapter(
                     recyclerAdapterListener?.updateFav(productModel)
                 }
 
-                favoriteBinding.swipe.setShowMode(SwipeLayout.ShowMode.LayDown);
+                favoriteBinding.swipe.setShowMode(SwipeLayout.ShowMode.LayDown)
                 favoriteBinding.swipe.addDrag(SwipeLayout.DragEdge.Left, favoriteBinding.bottomWrapper)
 
                 favoriteBinding.swipe.addSwipeListener(object : SwipeListener {
@@ -110,16 +111,18 @@ class ProductAdapter(
 
             is ProductState.Cart -> {
                 val cartBinding = viewHolder.binding as ProductItemCartBinding
-
                 cartBinding.tvNumber.text = itemCount.toString()
-                cartBinding.ivPlus.setOnClickListener {
 
-
-                }
                 cartBinding.ivMinus.setOnClickListener {
                     if (productModel.numbers > 1) {
                         productModel.numbers--
+                    }else{
+                        recyclerAdapterListener?.updateSlc(productModel,0)
+
                     }
+                }
+                cartBinding.ivPlus.setOnClickListener {
+                        productModel.numbers++
                 }
                 cartBinding.product = productModel
             }

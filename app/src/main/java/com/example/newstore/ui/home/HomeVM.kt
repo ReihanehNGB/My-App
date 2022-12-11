@@ -14,33 +14,17 @@ import javax.inject.Inject
 class HomeVM
 @Inject constructor(
     private val productRepository: ProductRepository
-
-
 ) : ViewModel() {
-
     val homeLiveDataP: MutableLiveData<NetworkResult<MutableList<ProductM>>> = MutableLiveData()
 
     fun listProducts() {
-
         homeLiveDataP.postValue(NetworkResult.Loading(true))
-
-
         viewModelScope.launch {
             productRepository.getListProducts().collect{
-
                 homeLiveDataP.postValue(it)
             }
-
-
         }
-
-
-//            productRepository.repositoryLiveData.observe()
-
-
     }
-
-
 }
 
 

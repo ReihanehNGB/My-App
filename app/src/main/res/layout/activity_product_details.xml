@@ -21,106 +21,125 @@
   </data>
 
   <RelativeLayout
-      android:id="@+id/rl_details"
+      android:id="@+id/rl_parent"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:layout_margin="8dp"
+      android:progressDrawable="@drawable/loading2"
       tools:context=".ui.details.ProductDetailsActivity">
 
-    <ImageView
-        android:id="@+id/ic_back"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:padding="6dp"
-        android:src="@drawable/ic_back" />
-    <TextView
-        android:id="@+id/tv_title_page"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Detali Product"
-        android:layout_centerHorizontal="true"
-        android:fontFamily="@font/montblanc_trial_bold"
-        android:textColor="@color/teal_200"
-        android:textSize="20sp"
-        android:layout_gravity="center"
-        />
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cv_img_slider"
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/progressBar_detail"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_below="@+id/tv_title_page"
-        app:cardCornerRadius="40dp"
-        android:layout_margin="12dp"
-        android:elevation="6dp"
-        >
-      <com.denzcoskun.imageslider.ImageSlider
-          android:id="@+id/image_slider"
+        android:layout_height="match_parent"
+        android:src="@drawable/loading2"
+        android:visibility="gone"
+        android:layout_alignParentBottom="true"
+        android:elevation="2dp"
+        tools:ignore="MissingClass" />
+
+    <RelativeLayout
+        android:id="@+id/rl_details"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_margin="8dp"
+        android:visibility="gone">
+
+      <ImageView
+          android:id="@+id/ic_back"
+          android:layout_width="32dp"
+          android:layout_height="32dp"
+          android:padding="6dp"
+          android:src="@drawable/ic_back" />
+
+      <TextView
+          android:id="@+id/tv_title_page"
           android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="Detali Product"
+          android:layout_centerHorizontal="true"
+          android:fontFamily="@font/montblanc_trial_bold"
+          android:textColor="@color/teal_200"
+          android:textSize="20sp"
+          android:layout_gravity="center"
+          />
+
+      <androidx.cardview.widget.CardView
+          android:id="@+id/cv_img_slider"
+          android:layout_width="match_parent"
           android:layout_height="300dp"
-          app:iss_auto_cycle="false"
-          app:iss_delay="2"
-          app:iss_period="1500"
-          app:iss_title_background="@color/transparent" />
-    </androidx.cardview.widget.CardView>
-
-
-
-
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/cv_img_slider"
-        android:layout_marginTop="10dp">
-      <RelativeLayout
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content">
-
-        <TextView
-            android:id="@+id/tv_title"
+          android:layout_below="@+id/tv_title_page"
+          app:cardCornerRadius="40dp"
+          android:layout_margin="12dp"
+          android:elevation="6dp"
+          >
+        <com.denzcoskun.imageslider.ImageSlider
+            android:id="@+id/image_slider"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
-            android:hint="Title"
-            android:text="@{product.title}"
-            android:fontFamily="@font/montblanc_trial_bold"
-            android:textColor="@color/black"
-            android:textSize="28sp" />
+            android:layout_height="300dp"
+            app:iss_auto_cycle="false"
+            app:iss_delay="2"
+            app:iss_period="1500"
+            app:iss_title_background="@color/transparent" />
+      </androidx.cardview.widget.CardView>
 
-
-        <LinearLayout
-            android:id="@+id/ll_color"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="26sp"
-            android:layout_below="@+id/tv_title"
-            >
+      <androidx.core.widget.NestedScrollView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_below="@+id/cv_img_slider"
+          android:layout_marginTop="10dp"
+          android:layout_marginStart="12dp"
+          android:layout_marginEnd="12dp">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
           <TextView
-              android:id="@+id/click_color"
+              android:id="@+id/tv_title"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
-              android:text="Select Color"
-              android:padding="8dp"
-              android:onClick="@{presenter::clickColor}"
-              android:background="@drawable/bg_select_color"
-              android:layout_gravity="center_vertical"
-              android:textColor="@color/white"/>
+              android:layout_marginTop="6dp"
+              android:fontFamily="@font/montblanc_trial_bold"
+              android:hint="Title"
+              android:text="@{product.title}"
+              android:textColor="@color/black"
+              android:textSize="28sp" />
 
 
-          <net.cachapa.expandablelayout.ExpandableLayout
-              android:id="@+id/expand_color"
+          <LinearLayout
+              android:id="@+id/ll_color"
               android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="horizontal"
-              android:layout_marginStart="8dp"
-              app:el_duration="1000"
-              app:el_expanded="false">
-            <LinearLayout
+              android:layout_height="50dp"
+              android:layout_marginTop="26sp"
+              android:layout_below="@+id/tv_title"
+              >
+
+            <TextView
+                android:id="@+id/click_color"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Select Color"
+                android:padding="8dp"
+                android:onClick="@{presenter::clickColor}"
+                android:background="@drawable/bg_select_color"
+                android:layout_gravity="center_vertical"
+                android:textColor="@color/white"/>
+
+
+            <net.cachapa.expandablelayout.ExpandableLayout
+                android:id="@+id/expand_color"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
-                android:gravity="center">
+                android:layout_marginStart="8dp"
+                app:el_duration="1000"
+                app:el_expanded="false">
+              <LinearLayout
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:orientation="horizontal"
+                  android:gravity="center">
 
                 <ImageView
                     android:layout_width="32dp"
@@ -128,24 +147,24 @@
                     android:layout_margin="8dp"
                     android:background="@drawable/rectangle_radius_12"
                     android:backgroundTint="#FDD835" />
-              <ImageView
-                  android:layout_width="32dp"
-                  android:layout_height="32dp"
-                  android:layout_margin="8dp"
-                  android:background="@drawable/rectangle_radius_12"
-                  android:backgroundTint="#714A6B" />
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/rectangle_radius_12"
+                    android:backgroundTint="#714A6B" />
                 <ImageView
                     android:layout_width="32dp"
                     android:layout_height="32dp"
                     android:layout_margin="8dp"
                     android:background="@drawable/rectangle_radius_12"
                     android:backgroundTint="@color/teal_700" />
-              <ImageView
-                  android:layout_width="32dp"
-                  android:layout_height="32dp"
-                  android:layout_margin="8dp"
-                  android:background="@drawable/rectangle_radius_12"
-                  android:backgroundTint="#2256AF" />
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/rectangle_radius_12"
+                    android:backgroundTint="#2256AF" />
 
                 <ImageView
                     android:layout_width="32dp"
@@ -155,34 +174,34 @@
                     android:backgroundTint="@color/red"
                     />
 
-            </LinearLayout>
-          </net.cachapa.expandablelayout.ExpandableLayout>
+              </LinearLayout>
+            </net.cachapa.expandablelayout.ExpandableLayout>
 
 
 
 
-        </LinearLayout>
+          </LinearLayout>
 
-        <TextView
-            android:id="@+id/tv_title_des"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/ll_color"
-            android:layout_marginTop="12dp"
-            android:hint="Title"
-            android:text="Description:"
-            android:textColor="@color/black"
-            android:fontFamily="@font/montblanc_trial_regular"
-            android:textSize="18sp" />
+          <TextView
+              android:id="@+id/tv_title_des"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_below="@+id/ll_color"
+              android:layout_marginTop="12dp"
+              android:hint="Title"
+              android:text="Description:"
+              android:textColor="@color/black"
+              android:fontFamily="@font/montblanc_trial_regular"
+              android:textSize="18sp" />
 
 
-        <TextView
-            android:id="@+id/tv_description"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_title_des"
-            android:fontFamily="@font/montblanc_trial_regular"
-            android:hint="Learn Kotlin
+          <TextView
+              android:id="@+id/tv_description"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_below="@+id/tv_title_des"
+              android:fontFamily="@font/montblanc_trial_regular"
+              android:hint="Learn Kotlin
 If you're already familiar  want to learn Kotlin, start with these
  Learn Kotlin If you're already familiar  want to learn Kotlin, start with these
  Learn Kotlin If want to learn Kotlin, start with these
@@ -192,24 +211,23 @@ If you're already familiar  want to learn Kotlin, start with these
  Learn Kotlin If you're already fami, start with these
 If you're already familiar  want to learn Kotlin, start with these Kotlin leaning materials.
 "
-            android:text="@{product.description}"
-            android:textSize="16sp" />
-      </RelativeLayout>
-    </androidx.core.widget.NestedScrollView>
+              android:text="@{product.description}"
+              android:textSize="16sp" />
+        </RelativeLayout>
+      </androidx.core.widget.NestedScrollView>
 
-
-    <RelativeLayout
-        android:id="@+id/ll"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="4dp"
-        android:background="@drawable/bg_navigation_bottom"
-        android:backgroundTint="@color/teal_200"
-        android:gravity="center"
-        android:orientation="horizontal">
+      <RelativeLayout
+          android:id="@+id/ll"
+          android:layout_width="match_parent"
+          android:layout_height="60dp"
+          android:layout_alignParentBottom="true"
+          android:layout_marginStart="10dp"
+          android:layout_marginEnd="10dp"
+          android:layout_marginBottom="4dp"
+          android:background="@drawable/bg_navigation_bottom"
+          android:backgroundTint="@color/teal_200"
+          android:gravity="center"
+          android:orientation="horizontal">
 
 
 
@@ -250,14 +268,17 @@ If you're already familiar  want to learn Kotlin, start with these Kotlin leanin
               android:layout_height="wrap_content"
               android:fontFamily="@font/montblanc_trial_bold"
               android:text="Add To Cart"
-              android:layout_margin="6dp"
+              android:layout_margin="8dp"
               android:layout_gravity="center"
-              android:textSize="16sp" />
+              android:textSize="14sp" />
 
 
         </androidx.cardview.widget.CardView>
 
+      </RelativeLayout>
+
     </RelativeLayout>
+
 
 
   </RelativeLayout>

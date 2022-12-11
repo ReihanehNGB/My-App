@@ -35,16 +35,16 @@
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/iv_product"
-                    android:layout_width="110dp"
-                    android:layout_height="110dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     app:cardCornerRadius="8dp"
                     android:layout_gravity="start"
                     >
                     <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_width="110dp"
+                        android:layout_height="110dp"
                         android:scaleType="fitXY"
-                        android:src="@{product.images[0]}"
+                        app:imageUrl="@{product.images[0]}"
                         />
                 </androidx.cardview.widget.CardView>
 

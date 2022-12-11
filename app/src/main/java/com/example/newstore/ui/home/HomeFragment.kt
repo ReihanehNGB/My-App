@@ -1,5 +1,6 @@
 package com.example.newstore.ui.home
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -24,6 +25,7 @@ import com.example.newstore.model.ProductM
 import com.example.newstore.ui.MainActivity
 import com.example.newstore.ui.search.SearchActivity
 import dagger.hilt.android.AndroidEntryPoint
+import okhttp3.internal.notify
 import java.io.Serializable
 
 
@@ -73,9 +75,11 @@ class HomeFragment : Fragment(), RecyclerAdapterListener {
             posterList.add(SlideModel(it.image,null,null))
         }
         binding.imageSlider.setImageList(posterList)
-//      createRecyclerPoster()
         provideCateList()
         createRecyclerCate()
+
+
+
 
         return binding.root
 
@@ -114,7 +118,7 @@ class HomeFragment : Fragment(), RecyclerAdapterListener {
         }
     }
 
-    fun filterCate(l: MutableList<ProductM>, nameClick: String) {
+    private fun filterCate(l: MutableList<ProductM>, nameClick: String) {
         l.forEach { it ->
             if (nameClick == "All Product") {
                 createRecyclerProduct(l)
@@ -123,6 +127,7 @@ class HomeFragment : Fragment(), RecyclerAdapterListener {
                 sorted = v as MutableList<ProductM>
                 createRecyclerProduct(sorted)
             }
+
         }
     }
 
@@ -134,15 +139,6 @@ class HomeFragment : Fragment(), RecyclerAdapterListener {
 
 
     }
-
-//    private fun createRecyclerPoster() {
-//        posteradapter = PosterAdapter(requireContext(), posterMS)
-//        binding.rvPoster.layoutManager =
-//            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-//        val snapHelper: SnapHelper = PagerSnapHelper()
-//        snapHelper.attachToRecyclerView(binding.rvPoster);
-//        binding.rvPoster.adapter = posteradapter
-//    }
 
 
     private fun createRecyclerCate() {
@@ -233,7 +229,7 @@ class HomeFragment : Fragment(), RecyclerAdapterListener {
 
     }
 
-    override fun updateSlc(productModel: ProductM) {
+    override fun updateSlc(productModel: ProductM, number: Int) {
         (activity as MainActivity).selectCart(productModel)
     }
 
@@ -248,6 +244,9 @@ class HomeFragment : Fragment(), RecyclerAdapterListener {
 
 
     }
+
+
+
 
 }
 

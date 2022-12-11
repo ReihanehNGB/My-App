@@ -11,9 +11,21 @@ object MUtils {
         editor.apply()
     }
 
+
+
     fun readToShared(context: Context, key: String): String? {
         val sharedPreferences = context.getSharedPreferences("SHP", Context.MODE_PRIVATE)
         return sharedPreferences.getString(key, null)
+    }
+
+
+
+
+    fun deleteUser(context: Context, key: String, value: String?){
+        val sharedPreferences = context.getSharedPreferences("SHP", Context.MODE_PRIVATE)
+        val editor: SharedPreferences.Editor = sharedPreferences.edit()
+        editor.remove(key)
+        editor.apply()
     }
 
     fun saveStateLogin(context: Context,key:String,value:Boolean){
@@ -23,7 +35,7 @@ object MUtils {
         editor.apply()
     }
 
-    fun checkLogin(context: Context, key: String): Boolean? {
+    fun checkLogin(context: Context, key: String): Boolean {
         val sharedPreferences = context.getSharedPreferences("SHP", Context.MODE_PRIVATE)
         return sharedPreferences.getBoolean(key, false)
     }

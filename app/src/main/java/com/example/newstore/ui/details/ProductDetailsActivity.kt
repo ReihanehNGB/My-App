@@ -1,5 +1,6 @@
 package com.example.newstore.ui.details
 
+import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -16,6 +17,7 @@ import com.example.newstore.model.NetworkResult
 import com.example.newstore.model.ProductM
 import com.example.newstore.ui.cart.CartFragment
 import com.example.newstore.utils.ViewPagerAdapter
+import com.example.newstore.utils.showToast
 import dagger.hilt.android.AndroidEntryPoint
 import org.greenrobot.eventbus.EventBus
 
@@ -41,43 +43,34 @@ class ProductDetailsActivity : AppCompatActivity() {
         productDetailsActivityVM.singleProduct("api/v1/products/$value")
 
 
+
+
         productDetailsActivityVM.homeLiveDataSP.observe(this) {
             when (it) {
                 is NetworkResult.Loading -> {
-//                    binding.progressBar.visibility = View.VISIBLE
+                    binding.progressBarDetail.visibility = View.VISIBLE
                 }
                 is NetworkResult.Success -> {
                     productM = it.data
                     val imageList = ArrayList<SlideModel>()
                     productM!!.images.forEach {
                         imageList.add(SlideModel(it, " ", ScaleTypes.CENTER_CROP))
+                        binding.rlDetails.visibility = View.VISIBLE
                         binding.product = productM
 
                     }
                     binding.imageSlider.setImageList(imageList)
-                    Toast.makeText(this, "${productM?.title}", Toast.LENGTH_SHORT).show()
+                    this.showToast("${productM?.title}")
+                    binding.progressBarDetail.visibility = View.GONE
 
 
-//                    binding.btnSeeMore.setOnClickListener(View.OnClickListener {
-//                        if (!expandable) {
-//                            expandable = true
-//                            val animation = ObjectAnimator.ofInt(binding.tvDescription, "maxLines", 40)
-//                            animation.setDuration(100).start()
-//                            binding.btnSeeMore.visibility =View.GONE
-//                        } else {
-//                            expandable = false
-//                            val animation = ObjectAnimator.ofInt(binding.tvDescription, "maxLines", 4)
-//                            animation.setDuration(100).start()
-//                            binding.btnSeeMore.visibility =View.VISIBLE
-//                        }
-//                    })
-//                    adapter = ProductAdapter(this,null,"DETAILS",null,productM,null)
-//                    binding.progressBar.visibility = View.GONE
+
+
 
 
                 }
                 is NetworkResult.Failure -> {
-//                    binding.progressBar.visibility = View.GONE
+                    binding.progressBarDetail.visibility = View.GONE
 //                    binding.error.visibility = View.VISIBLE
 
                 }
@@ -116,6 +109,23 @@ class ProductDetailsActivity : AppCompatActivity() {
         }
 
     }
+
+//    fun seeMore(){
+//        if (!expandable) {
+//            expandable = true
+//            val animation = ObjectAnimator.ofInt(binding.tvDescription, "maxLines", 40)
+//            animation.setDuration(100).start()
+//            binding.btnSeeMore.visibility =View.GONE
+//        } else {
+//            expandable = false
+//            val animation = ObjectAnimator.ofInt(binding.tvDescription, "maxLines", 4)
+//            animation.setDuration(100).start()
+//            binding.btnSeeMore.visibility =View.VISIBLE
+//        }
+//
+//        adapter = ProductAdapter(this,null,"DETAILS",null,null)
+//        binding.progressBar.visibility = View.GONE
+//    }
 
 
 

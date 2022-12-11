@@ -139,6 +139,7 @@
                     android:layout_height="150dp"
                     app:iss_auto_cycle="true"
                     app:iss_delay="2"
+                    android:layout_marginTop="8dp"
                     android:elevation="@dimen/cardview_default_elevation"
                     app:iss_period="1500"
                     app:iss_corner_radius="@integer/material_motion_duration_short_1"
@@ -149,7 +150,9 @@
                     android:id="@+id/rv_category"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="6dp" />
+                    android:layout_marginTop="6dp"
+                    android:clipToPadding="false"
+                    />
 
 
 
@@ -159,6 +162,7 @@
                     android:id="@+id/rv_products"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="64dp"
                     />
                 <ProgressBar
                     android:id="@+id/progressBar"
