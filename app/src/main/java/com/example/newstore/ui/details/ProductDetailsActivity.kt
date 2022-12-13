@@ -60,7 +60,7 @@ class ProductDetailsActivity : AppCompatActivity() {
 
                     }
                     binding.imageSlider.setImageList(imageList)
-                    this.showToast("${productM?.title}")
+//                    this.showToast("${productM?.title}")
                     binding.progressBarDetail.visibility = View.GONE
 
 

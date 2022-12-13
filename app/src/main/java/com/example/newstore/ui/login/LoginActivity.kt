@@ -15,6 +15,7 @@ import com.example.newstore.model.NetworkResult
 import com.example.newstore.model.UserM
 import com.example.newstore.ui.MainActivity
 import com.example.newstore.utils.MUtils
+import com.example.newstore.utils.vibrate
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -87,6 +88,7 @@ class LoginActivity : AppCompatActivity() {
                 finish()
             }//close if
             else {
+                vibrate(500)
                 binding.tvError.visibility = View.VISIBLE
                 Handler(Looper.getMainLooper()).postDelayed({
                     binding.etEmail.setText("")

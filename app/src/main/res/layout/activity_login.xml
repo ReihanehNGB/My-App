@@ -58,7 +58,7 @@
                 android:layout_marginTop="22dp"
                 android:layout_marginRight="22dp"
                 android:background="@drawable/bg_navigation_bottom"
-                android:hint="Enter your email"
+                android:hint="Enter your username"
                 android:inputType="textEmailAddress"
                 android:paddingStart="20dp"
                 android:paddingEnd="20dp" />

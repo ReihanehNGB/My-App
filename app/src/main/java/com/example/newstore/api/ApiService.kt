@@ -35,12 +35,11 @@ interface ApiService {
 
     @FormUrlEncoded
     @POST("api/v1/users/")
-    fun updateUser(
+    suspend fun updateUser(
         @Field ("name") name: String,
         @Field ("email") email: String,
         @Field ("password") password: String,
         @Field ("avatar") image: String
-
     ): JsonObject
 
 

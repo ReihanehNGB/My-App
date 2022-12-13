@@ -4,6 +4,9 @@ import android.app.Activity
 import android.content.Context
 import android.content.Context.INPUT_METHOD_SERVICE
 import android.graphics.Color
+import android.os.Build
+import android.os.VibrationEffect
+import android.os.Vibrator
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.Gravity
@@ -99,6 +102,16 @@ fun EditText.clear() {
 
 fun EditText.setText(text: String) {
     this.setText(text, TextView.BufferType.EDITABLE)
+}
+
+fun Context.vibrate(duration: Long) {
+    val vib = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        vib.vibrate(VibrationEffect.createOneShot(duration, VibrationEffect.DEFAULT_AMPLITUDE))
+    } else {
+        @Suppress("DEPRECATION")
+        vib.vibrate(duration)
+    }
 }
 
 //fun RecyclerView.paginateListener(listener: () -> Unit) {

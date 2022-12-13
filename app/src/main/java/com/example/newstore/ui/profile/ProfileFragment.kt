@@ -4,6 +4,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -127,15 +128,26 @@ class ProfileFragment : Fragment() {
     private fun updateProfile() {
         val newName = binding.etName.text.toString()
         val newEmail = binding.etEmail.text.toString()
-        userModel = UserM(
-            userID,
-            newName,
-            userIMG,
-            newEmail,
-            userPASS
-        )
-        binding.userModel = userModel
-        profileVM.updateUser(newName,newEmail,userPASS,userIMG)
+        if (newName!=""){
+            userModel = UserM(
+                userID,
+                newName,
+                userIMG,
+                newEmail,
+                userPASS
+            )
+            binding.userModel = userModel
+            profileVM.updateUser(newName,newEmail,userPASS,userIMG)
+
+        }else{
+            binding.errorNullName.visibility = View.VISIBLE
+            binding.newName.visibility = View.GONE
+            binding.parentName.setOnClickListener {
+                binding.errorNullName.visibility = View.GONE
+                editName(view = null)
+            }
+        }
+
 
     }
 
@@ -152,31 +164,23 @@ class ProfileFragment : Fragment() {
     }
 
 
-    fun edit(view: View){
+    fun editName(view: View?){
             binding.newName.visibility = View.GONE
             binding.etName.visibility = View.VISIBLE
             binding.editIcon.visibility = View.GONE
             binding.editDone.visibility = View.VISIBLE
 
-//            binding.editIconE.setOnClickListener{
-//                binding.newEmail.visibility = View.GONE
-//                binding.etEmail.visibility = View.VISIBLE
-//                binding.editIconE.visibility = View.GONE
-//                binding.editDoneE.visibility = View.VISIBLE
-//                binding.editDoneE.setOnClickListener {
-//                    binding.etEmail.visibility = View.GONE
-//                    binding.newEmail.visibility = View.VISIBLE
-//                    binding.editDoneE.visibility = View.GONE
-//                    binding.editIconE.visibility = View.VISIBLE
-//
-//                    updateProfile()
-//
-//                    Toast.makeText(requireContext(), "Email Changed", Toast.LENGTH_LONG).show()
-//                }
-//            }
     }
 
-    fun editDone(view: View){
+
+    fun editEmail(view: View){
+                binding.newEmail.visibility = View.GONE
+                binding.etEmail.visibility = View.VISIBLE
+                binding.editIconE.visibility = View.GONE
+                binding.editDoneE.visibility = View.VISIBLE
+    }
+
+    fun editDoneName(view: View){
         binding.etName.visibility = View.GONE
         binding.newName.visibility = View.VISIBLE
         binding.editDone.visibility = View.GONE
@@ -184,6 +188,15 @@ class ProfileFragment : Fragment() {
         updateProfile()
         Toast.makeText(requireContext(), "Name Changed", Toast.LENGTH_LONG).show()
     }
+    fun editDoneEmail(view: View){
+        binding.etEmail.visibility = View.GONE
+        binding.newEmail.visibility = View.VISIBLE
+        binding.editDoneE.visibility = View.GONE
+        binding.editIconE.visibility = View.VISIBLE
+        updateProfile()
+        Toast.makeText(requireContext(), "Name Changed", Toast.LENGTH_LONG).show()
+    }
+
 
     private fun observe(){
         profileVM.profLiveDataUser.observe(viewLifecycleOwner) {
@@ -192,6 +205,7 @@ class ProfileFragment : Fragment() {
                 }
                 is NetworkResult.Success -> {
                     binding.userModel = it.data
+                    Log.i("TAG", "observe:${it.data} ")
                 }
                 is NetworkResult.Failure -> {
                     error = it.errorMessage
