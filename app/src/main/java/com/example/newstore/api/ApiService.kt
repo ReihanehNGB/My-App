@@ -37,9 +37,10 @@ interface ApiService {
     @POST("api/v1/users/")
     suspend fun updateUser(
         @Field ("name") name: String,
+        @Field ("avatar") image: String,
         @Field ("email") email: String,
         @Field ("password") password: String,
-        @Field ("avatar") image: String
+        @Field ("role") role: String?
     ): JsonObject
 
 

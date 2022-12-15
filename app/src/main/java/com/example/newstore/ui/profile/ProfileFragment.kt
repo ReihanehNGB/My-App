@@ -18,8 +18,10 @@ import com.example.newstore.databinding.ProfileFragmentBinding
 import com.example.newstore.model.NetworkResult
 import com.example.newstore.model.UserM
 import com.example.newstore.ui.login.LoginActivity
+import com.example.newstore.ui.signup.SignUpActivity
 import com.example.newstore.utils.MUtils
 import dagger.hilt.android.AndroidEntryPoint
+import java.time.zone.ZoneOffsetTransitionRule
 
 
 @AndroidEntryPoint
@@ -54,16 +56,19 @@ class ProfileFragment : Fragment() {
 
         observe()
 
-
-
-
         binding.llExit.setOnClickListener {
             binding.rl.visibility = View.GONE
+            binding.ivProfile.visibility = View.GONE
             binding.btnSignIn.visibility = View.VISIBLE
         }
         binding.btnSignIn.setOnClickListener{
             MUtils.deleteUser(requireContext(), "Is Login", null)
             val intent = Intent(context, LoginActivity::class.java)
+            startActivity(intent)
+        }
+        binding.btnSignUp.setOnClickListener{
+            MUtils.deleteUser(requireContext(), "Is Login", null)
+            val intent = Intent(context, SignUpActivity::class.java)
             startActivity(intent)
         }
 
@@ -87,7 +92,6 @@ class ProfileFragment : Fragment() {
                 }
                 is NetworkResult.Failure -> {
                     val error = it.errorMessage
-
                 }
                 else -> {}
 
@@ -96,16 +100,21 @@ class ProfileFragment : Fragment() {
         }//close observe
 
 
-
-
-
-
-
-
         return binding.root
 
     }
 
+    private fun checkLoginUser(lUserModel: MutableList<UserM>){
+        val stateLogin = MUtils.checkLogin(requireContext(),"Is Login")
+
+        if (stateLogin){
+            createProfile(lUserModel)
+        }else{
+            binding.rl.visibility = View.GONE
+            binding.btnSignIn.visibility = View.VISIBLE
+        }
+
+    }
 
     private fun createProfile(lUserModel: MutableList<UserM>) {
         val vlu = MUtils.readToShared(requireContext(),"SingleU")
@@ -121,9 +130,6 @@ class ProfileFragment : Fragment() {
 
 
     }
-
-
-
 
     private fun updateProfile() {
         val newName = binding.etName.text.toString()
@@ -151,19 +157,6 @@ class ProfileFragment : Fragment() {
 
     }
 
-
-    private fun checkLoginUser(lUserModel: MutableList<UserM>){
-        val stateLogin = MUtils.checkLogin(requireContext(),"Is Login")
-        if (stateLogin){
-            createProfile(lUserModel)
-        }else{
-            binding.rl.visibility = View.GONE
-            binding.btnSignIn.visibility = View.VISIBLE
-        }
-
-    }
-
-
     fun editName(view: View?){
             binding.newName.visibility = View.GONE
             binding.etName.visibility = View.VISIBLE
@@ -171,7 +164,6 @@ class ProfileFragment : Fragment() {
             binding.editDone.visibility = View.VISIBLE
 
     }
-
 
     fun editEmail(view: View){
                 binding.newEmail.visibility = View.GONE
@@ -188,6 +180,7 @@ class ProfileFragment : Fragment() {
         updateProfile()
         Toast.makeText(requireContext(), "Name Changed", Toast.LENGTH_LONG).show()
     }
+
     fun editDoneEmail(view: View){
         binding.etEmail.visibility = View.GONE
         binding.newEmail.visibility = View.VISIBLE

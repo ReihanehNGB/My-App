@@ -466,6 +466,20 @@
             </LinearLayout>
         </RelativeLayout>
 
+            <Button
+                android:id="@+id/btn_sign_up"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginLeft="22dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginRight="22dp"
+                android:layout_marginBottom="40dp"
+                android:background="@drawable/bg_top_login"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:text="Sign up"
+                android:visibility="gone"
+                android:textColor="@color/white" />
+
     <Button
         android:id="@+id/btn_sign_in"
         android:layout_width="match_parent"

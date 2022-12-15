@@ -5,8 +5,11 @@
 
     <data>
         <variable
+            name="userModel"
+            type="com.example.newstore.model.UserM" />
+        <variable
             name="presenter"
-            type="com.example.newstore.ui.login.LoginActivity" />
+            type="com.example.newstore.ui.signup.SignUpActivity" />
 
     </data>
 
@@ -39,9 +42,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="22dp"
             android:layout_marginTop="86dp"
-            android:text="Hello!"
+            android:text="Create Account"
             android:textColor="#065660"
-            android:textSize="72sp"
+            android:textSize="40sp"
             android:textStyle="bold" />
 
         <RelativeLayout
@@ -52,14 +55,28 @@
 
 
             <EditText
-                android:id="@+id/et_Email"
+                android:id="@+id/et_name"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
                 android:layout_marginLeft="22dp"
                 android:layout_marginTop="22dp"
                 android:layout_marginRight="22dp"
                 android:background="@drawable/bg_navigation_bottom"
-                android:hint="Enter your username"
+                android:hint="Enter your name"
+                android:inputType="text"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp" />
+
+            <EditText
+                android:id="@+id/et_Email"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_below="@+id/et_name"
+                android:layout_marginLeft="22dp"
+                android:layout_marginTop="22dp"
+                android:layout_marginRight="22dp"
+                android:background="@drawable/bg_navigation_bottom"
+                android:hint="Enter your email"
                 android:inputType="textEmailAddress"
                 android:paddingStart="20dp"
                 android:paddingEnd="20dp" />
@@ -79,33 +96,53 @@
                 android:inputType="textPassword"
                 android:paddingStart="20dp" />
 
-            <TextView
-                android:id="@+id/forget_pass"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <EditText
+                android:id="@+id/et_phone"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
                 android:layout_below="@+id/et_Password"
-                android:layout_marginStart="36dp"
-                android:text="Forgot Password?"
-                android:textColor="#5E5454" />
+                android:layout_marginStart="22dp"
+                android:layout_marginTop="22dp"
+                android:layout_marginEnd="22dp"
+                android:layout_marginBottom="2dp"
+                android:background="@drawable/bg_navigation_bottom"
+                android:hint="Enter your phone"
+                android:inputType="phone"
+                android:paddingStart="20dp" />
+
+            <EditText
+                android:id="@+id/et_role"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_below="@+id/et_phone"
+                android:layout_marginStart="22dp"
+                android:layout_marginTop="22dp"
+                android:layout_marginEnd="22dp"
+                android:layout_marginBottom="2dp"
+                android:background="@drawable/bg_navigation_bottom"
+                android:hint="Enter your role"
+                android:inputType="text"
+                android:paddingStart="20dp" />
+
 
             <Button
-                android:id="@+id/btn_login"
+                android:id="@+id/btn_sign_up"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:layout_below="@+id/forget_pass"
+                android:layout_below="@+id/et_role"
                 android:layout_marginLeft="22dp"
-                android:layout_marginTop="80dp"
+                android:layout_marginTop="40dp"
                 android:layout_marginRight="22dp"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="44dp"
                 android:background="@drawable/bg_top_login"
-                android:onClick="@{presenter::checkUserPass}"
-                android:text="Login"
+                android:onClick="@{presenter::signUp}"
+                android:text="Sign Up"
                 android:textColor="@color/white" />
 
         </RelativeLayout>
 
         <TextView
-            android:id="@+id/skip"
+            android:id="@+id/skeep"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
@@ -113,18 +150,17 @@
             android:layout_marginTop="24dp"
             android:padding="12dp"
             android:onClick="@{presenter::skeep}"
-            android:text="Skeep " />
+            android:text="Skeep" />
 
         <TextView
             android:id="@+id/ques_signUp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:paddingBottom="12dp"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:fontFamily="@font/montblanc_trial_regular"
-            android:text="Do you not have an account? " />
+            android:paddingBottom="12dp"
+            android:text="Already have an account? " />
 
         <TextView
             android:id="@+id/signUp"
@@ -134,9 +170,9 @@
             android:layout_marginTop="24dp"
             android:layout_toEndOf="@+id/ques_signUp"
             android:fontFamily="@font/montblanc_trial_bold"
-            android:onClick="@{presenter::signUp}"
             android:paddingBottom="12dp"
-            android:text="Sign Up "
+            android:text="Log in "
+            android:onClick="@{presenter::login}"
             android:textColor="@color/teal_200" />
 
 

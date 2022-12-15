@@ -1,14 +1,11 @@
 package com.example.newstore.repository
 
 import com.example.newstore.api.ApiService
-import com.example.newstore.model.CategoryM
 import com.example.newstore.model.NetworkResult
-import com.example.newstore.model.ProductM
 import com.example.newstore.model.UserM
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.flow.flow
-import retrofit2.Call
 import java.lang.reflect.Type
 import java.util.ArrayList
 import javax.inject.Inject
@@ -53,11 +50,11 @@ class UserRepository @Inject constructor(
     }//close fun
 
 
-    fun updateUser(name:String,email: String, password: String, image:String) = flow<NetworkResult<UserM>> {
+    fun updateUser(name:String,image:String, email: String, password: String,  role: String?) = flow<NetworkResult<UserM>> {
 
 
         try {
-            val result = apiService.updateUser(name,email,password,image).toString()
+            val result = apiService.updateUser(name,image,email,password, role).toString()
 
             val listType: Type? = object : TypeToken<UserM>() {}.type
             val data: UserM = Gson().fromJson(result, listType)

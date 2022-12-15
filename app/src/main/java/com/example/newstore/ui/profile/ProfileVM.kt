@@ -1,16 +1,11 @@
 package com.example.newstore.ui.profile
 
-import android.provider.ContactsContract
 import androidx.lifecycle.*
 import com.example.newstore.model.NetworkResult
-import com.example.newstore.model.ProductM
 import com.example.newstore.model.UserM
 import com.example.newstore.repository.UserRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
-import retrofit2.Call
 import javax.inject.Inject
 
 @HiltViewModel
@@ -63,7 +58,7 @@ class ProfileVM
     fun updateUser(name:String,email: String, password: String, image:String){
 
         viewModelScope.launch {
-            userRepository.updateUser(name,email,password,image).collect{
+            userRepository.updateUser(name,email,password,image,null).collect{
                 profLiveDataUser.postValue(it)
             }
 
