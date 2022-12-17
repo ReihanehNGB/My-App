@@ -95,15 +95,19 @@ dependencies {
     //Image Slider
     implementation 'com.github.denzcoskun:ImageSlideshow:0.1.0'
 
+    //eventBus
     implementation 'org.greenrobot:eventbus:3.2.0'
 
+
+    //noinspection GradleCompatible
     implementation 'com.android.support:design:28.0.0-rc01'
 
-
-
+    //swipeLayout
     implementation "com.daimajia.swipelayout:library:1.2.0@aar"
 
-    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.25'
+    //gif
+    implementation "pl.droidsonroids.gif:android-gif-drawable:1.2.25"
+
 
 
 

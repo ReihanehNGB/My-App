@@ -9,6 +9,7 @@ import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import com.example.newstore.R
 import com.example.newstore.databinding.ActivitySignUpBinding
+import com.example.newstore.databinding.ProfileFragmentBinding
 import com.example.newstore.model.NetworkResult
 import com.example.newstore.model.UserM
 import com.example.newstore.ui.MainActivity
@@ -21,6 +22,7 @@ class SignUpActivity : AppCompatActivity() {
     lateinit var binding: ActivitySignUpBinding
     private val signUpVM: SignUpVM by viewModels()
     var error: String = ""
+    var phone: String = "09361318220"
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,6 +33,7 @@ class SignUpActivity : AppCompatActivity() {
 
 
     fun signUp(view: View?) {
+//        phone = binding.etPhone.text.toString()
         signUpVM.createAccount(
             binding.etName.text.toString(),
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnNfxn7JD5QaLWQTgP409ZN19ii6Xz4IJIJg&usqp=CAU",
@@ -38,6 +41,8 @@ class SignUpActivity : AppCompatActivity() {
             binding.etPassword.text.toString(),
             binding.etRole.text.toString()
         )
+
+
 
         MUtils.saveStateLogin(this,"Is Login",true)
     }

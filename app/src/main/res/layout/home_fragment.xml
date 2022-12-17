@@ -16,174 +16,135 @@
 
     </data>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="4dp"
-        android:orientation="vertical">
+        android:layout_margin="6dp">
 
-        <RelativeLayout
-            android:id="@+id/rl"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_tabBar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            >
+            android:layout_height="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/nestedScrollView"
+            tools:ignore="MissingConstraints">
 
             <ImageView
                 android:id="@+id/menu"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
-                android:layout_alignParentRight="true"
                 android:background="@drawable/ellipse"
                 android:clickable="true"
                 android:focusable="true"
                 android:rotation="180"
-                android:src="@drawable/ic_menu" />
+                android:src="@drawable/ic_menu"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:ignore="MissingConstraints" />
+
 
             <ImageView
                 android:id="@+id/ic_search"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
-                android:padding="4dp"
-                android:layout_alignParentLeft="true"
                 android:background="?selectableItemBackgroundBorderless"
                 android:onClick="@{presenter::search}"
+                android:padding="4dp"
                 android:src="@drawable/ic_search"
-                android:visibility="visible" />
+                android:visibility="visible"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:ignore="MissingConstraints" />
 
             <net.cachapa.expandablelayout.ExpandableLayout
                 android:id="@+id/expandable_layout_hrz"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginStart="32dp"
-                android:layout_marginEnd="32dp"
                 app:el_duration="1000"
                 app:el_expanded="false"
-                >
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="32dp"
-                    android:orientation="horizontal"
-                    >
-
-                    <EditText
-                        android:id="@+id/et_search"
-                        style="@style/TextAppearance.AppCompat.Medium"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:hint="Expanded Content"
-                        android:lines="1"
-                        android:background="@drawable/bg_search"
-                        android:textColor="#000000" />
-                    <ImageView
-                        android:id="@+id/ic_expand"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:layout_alignParentRight="true"
-                        android:layout_marginRight="4dp"
-                        android:layout_centerVertical="true"
-                        android:src="@drawable/icons_close"
-                        android:visibility="gone"/>
-
-                    <net.cachapa.expandablelayout.ExpandableLayout
-                        android:id="@+id/expandable_layout_vrt"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:layout_marginStart="32dp"
-                        android:layout_marginEnd="32dp"
-                        android:layout_marginBottom="24dp"
-                        app:el_duration="1000"
-                        app:el_expanded="false"
-                        >
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
-                            <androidx.recyclerview.widget.RecyclerView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/rv_search_product"
-                                />
-                        </RelativeLayout>
-
-                    </net.cachapa.expandablelayout.ExpandableLayout>
-
-
-
-
-                </RelativeLayout>
-
+                app:layout_constraintStart_toStartOf="@+id/ic_search"
+                app:layout_constraintTop_toTopOf="@+id/ic_search"
+                tools:ignore="MissingConstraints">
 
             </net.cachapa.expandablelayout.ExpandableLayout>
 
-
-        </RelativeLayout>
-
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
         <androidx.core.widget.NestedScrollView
+            android:id="@+id/nestedScrollView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cl_tabBar"
+            tools:ignore="MissingConstraints">
 
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
+                android:layout_height="0dp">
                 <com.denzcoskun.imageslider.ImageSlider
                     android:id="@+id/image_slider"
                     android:layout_width="wrap_content"
-                    android:layout_height="150dp"
-                    app:iss_auto_cycle="true"
-                    app:iss_delay="2"
-                    android:layout_marginTop="8dp"
+                    android:layout_height="148dp"
                     android:elevation="@dimen/cardview_default_elevation"
-                    app:iss_period="1500"
+                    app:iss_auto_cycle="true"
                     app:iss_corner_radius="@integer/material_motion_duration_short_1"
-                    app:iss_title_background="@color/transparent" />
+                    app:iss_delay="2"
+                    app:iss_period="1500"
+                    app:iss_title_background="@color/transparent"
+                    tools:ignore="MissingConstraints" />
 
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_category"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
                     android:clipToPadding="false"
-                    />
-
-
-
+                    tools:ignore="MissingConstraints" />
 
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_products"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="64dp"
-                    />
+                    tools:ignore="MissingConstraints" />
+
                 <ProgressBar
                     android:id="@+id/progressBar"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:visibility="gone" />
+                    android:visibility="gone"
+                    tools:ignore="MissingConstraints" />
 
                 <TextView
-                    tools:ignore="ExtraText,HardcodedText"
                     android:id="@+id/error"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@{homeFrg.error}"
                     android:textSize="24sp"
-                    android:visibility="gone">
+                    android:visibility="gone"
+                    tools:ignore="ExtraText,HardcodedText,MissingConstraints">
 
                 </TextView>
 
-            </LinearLayout>
+                <androidx.constraintlayout.helper.widget.Flow
+                    android:id="@+id/flowView"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    app:constraint_referenced_ids="image_slider,rv_category,rv_products,progressBar,error"
+                    app:flow_horizontalGap="10dp"
+                    app:flow_horizontalStyle="spread"
+                    app:flow_verticalGap="10dp"
+                    app:flow_verticalStyle="spread"
+                    app:flow_wrapMode="aligned" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.core.widget.NestedScrollView>
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

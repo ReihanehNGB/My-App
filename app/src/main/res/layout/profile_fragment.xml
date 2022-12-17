@@ -15,6 +15,9 @@
         <variable
             name="img"
             type="com.example.newstore.adapter.BindAdapter" />
+        <variable
+            name="phone"
+            type="com.example.newstore.ui.signup.SignUpActivity" />
 
 
 
@@ -287,7 +290,7 @@
                         android:layout_marginTop="8dp"
                         android:layout_toEndOf="@+id/phone_icon"
                         android:fontFamily="@font/montblanc_trial_regular"
-                        android:text="@string/phone"
+                        android:hint="09361318226"
                         android:textSize="14sp" />
 
 

@@ -123,6 +123,7 @@
             android:paddingBottom="12dp"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
+            android:textSize="12sp"
             android:fontFamily="@font/montblanc_trial_regular"
             android:text="Do you not have an account? " />
 
@@ -132,6 +133,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_marginTop="24dp"
+            android:textSize="12sp"
             android:layout_toEndOf="@+id/ques_signUp"
             android:fontFamily="@font/montblanc_trial_bold"
             android:onClick="@{presenter::signUp}"

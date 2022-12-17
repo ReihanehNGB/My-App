@@ -15,42 +15,62 @@
 
     </data>
 
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/relativeLayout2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="#fff">
+        android:background="#fff"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.91" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.01" />
 
         <com.example.newstore.utils.CustomViewPager
             android:id="@+id/viewPager"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="@id/guideline2"
             tools:ignore="MissingClass">
-        </com.example.newstore.utils.CustomViewPager>
 
+        </com.example.newstore.utils.CustomViewPager>
 
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cv_bottom"
             android:layout_width="match_parent"
             android:layout_height="54dp"
-            android:layout_alignParentBottom="true"
-            android:layout_margin="12dp"
-            app:cardCornerRadius="36dp"
-            android:gravity="center"
-            app:cardElevation="18dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="12dp"
             android:backgroundTint="@color/teal_200"
-            >
+            android:gravity="center"
+            app:cardCornerRadius="36dp"
+            app:cardElevation="18dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:weightSum="5"
+                android:layout_gravity="center"
                 android:gravity="center"
-                android:layout_gravity="center">
+                android:orientation="horizontal"
+                android:weightSum="5">
 
                 <ImageView
                     android:id="@+id/ic_home"
@@ -58,8 +78,8 @@
                     android:layout_height="28dp"
                     android:layout_weight="1"
                     android:background="?attr/selectableItemBackgroundBorderless"
-                    android:focusable="true"
                     android:clickable="true"
+                    android:focusable="true"
                     android:onClick="press"
                     android:padding="2dp"
                     android:src="@{state == `SelectedHome` ? @drawable/clicked_home : @drawable/ic_home_bottom}" />
@@ -70,11 +90,10 @@
                     android:layout_height="28dp"
                     android:layout_weight="1"
                     android:background="?attr/selectableItemBackgroundBorderless"
-                    android:focusable="true"
                     android:clickable="true"
+                    android:focusable="true"
                     android:padding="2dp"
-                    android:src="@{state == `SelectedFavorite` ? @drawable/clicked_fav : @drawable/ic_favorite}"
-                     />
+                    android:src="@{state == `SelectedFavorite` ? @drawable/clicked_fav : @drawable/ic_favorite}" />
 
                 <ImageView
                     android:id="@+id/ic_category"
@@ -82,11 +101,10 @@
                     android:layout_height="28dp"
                     android:layout_weight="1"
                     android:background="?attr/selectableItemBackgroundBorderless"
-                    android:focusable="true"
                     android:clickable="true"
+                    android:focusable="true"
                     android:padding="2dp"
-                    android:src="@{state == `SelectedCategory` ? @drawable/clicked_category : @drawable/ic_category_buttom}"
-                    />
+                    android:src="@{state == `SelectedCategory` ? @drawable/clicked_category : @drawable/ic_category_buttom}" />
 
 
                 <ImageView
@@ -95,8 +113,8 @@
                     android:layout_height="28dp"
                     android:layout_weight="1"
                     android:background="?attr/selectableItemBackgroundBorderless"
-                    android:focusable="true"
                     android:clickable="true"
+                    android:focusable="true"
                     android:padding="2dp"
                     android:src="@{state == `SelectedBasket` ? @drawable/clicked_basket : @drawable/ic_basket}" />
 
@@ -106,18 +124,16 @@
                     android:layout_height="28dp"
                     android:layout_weight="1"
                     android:background="?attr/selectableItemBackgroundBorderless"
-                    android:focusable="true"
                     android:clickable="true"
+                    android:focusable="true"
                     android:padding="2dp"
-                    android:src="@{state == `SelectedProfile` ? @drawable/cliked_profile : @drawable/ic_profile}"
-                    />
+                    android:src="@{state == `SelectedProfile` ? @drawable/cliked_profile : @drawable/ic_profile}" />
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
 
-
-    </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </layout>
