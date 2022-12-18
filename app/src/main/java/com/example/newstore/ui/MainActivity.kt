@@ -54,6 +54,7 @@ class MainActivity : AppCompatActivity() {
         categoryfragment = CategoryFragment.newInstance()
         favoritfragment = FavoriteFragment.newInstance()
         profilefragment = ProfileFragment.newInstance()
+        binding.state = stateIcon
 
         setupViewPager()
         listener()

@@ -65,8 +65,6 @@ class HomeFragment : Fragment(), RecyclerAdapterListener {
 
         observe()
 
-
-
 //calling function
         providePosterList()
 

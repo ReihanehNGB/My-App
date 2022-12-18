@@ -11,6 +11,7 @@
             name="x"
             type="com.example.newstore.ui.ProductListActivity" />
 
+
     </data>
 
     <LinearLayout
@@ -21,23 +22,25 @@
         tools:context=".ui.ProductListActivity">
 
 
+
         <ImageView
             android:id="@+id/ic_back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_back"
-            android:layout_marginBottom="20dp"
-             />
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:padding="6dp"
+            android:src="@drawable/ic_back" />
 
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_product_list"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            />
         <ProgressBar
             android:id="@+id/progressBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:visibility="gone" />
 
         <TextView
@@ -45,6 +48,7 @@
             android:id="@+id/error"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
             android:text="@{x.error}"
             android:textSize="24sp"
             android:visibility="gone">

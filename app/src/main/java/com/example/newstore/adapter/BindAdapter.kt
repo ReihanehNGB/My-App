@@ -13,6 +13,7 @@ object BindAdapter {
         @BindingAdapter("imageUrl")
         fun loadImage(view: ImageView, url: String?) {
             Glide.with(view.context).load(url)
+                .skipMemoryCache(false)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(view)
     }

@@ -23,6 +23,7 @@ class ProductAdapter(
     private val state: ProductState,
     private val recyclerAdapterListener: RecyclerAdapterListener?
 ) : BaseRecyclerAdapter<ProductM?>(context, list) {
+    var stateFavorite :String = "false"
 
     override fun getRootLayoutId(): Int {
         return when (state) {
@@ -50,13 +51,21 @@ class ProductAdapter(
                     )
                 }
                 itemBinding.icFavorite.setOnClickListener {
-                    itemBinding.stateFav= "true"
-                    recyclerAdapterListener?.updateFav(productModel)
-
-                    itemBinding.icFavorite.setOnClickListener {
-                            itemBinding.stateFav= "false"
-                            recyclerAdapterListener?.updateFav(productModel)
+                    if (stateFavorite =="false"){
+                        stateFavorite = "true"
+                        itemBinding.stateFav= stateFavorite
+                        recyclerAdapterListener?.updateFav(productModel)
+                    }else{
+                        stateFavorite = "false"
+                        itemBinding.stateFav= stateFavorite
+                        recyclerAdapterListener?.updateFav(productModel)
                     }
+
+
+//                    itemBinding.icFavorite.setOnClickListener {
+//                            itemBinding.stateFav= "false"
+//                            recyclerAdapterListener?.updateFav(productModel)
+//                    }
                 }
 
                 itemBinding.product = productModel

@@ -174,7 +174,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="72dp"
                     android:layout_below="@+id/parent_name"
-                    android:layout_margin="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
                     android:background="@drawable/rectangle_radius_12"
                     android:orientation="vertical"
                     android:padding="6dp">
@@ -210,13 +213,17 @@
                         android:maxLength="10"
                         android:text="@{userModel.email}"
                         android:textSize="14sp"
-                        android:visibility="gone" />
+                        android:visibility="gone"
+                        app:autoSizeTextType="uniform" />
 
 
                     <TextView
                         android:id="@+id/new_email"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="200dp"
+                        android:autoSizeTextType="uniform"
+                        android:autoSizeMinTextSize="12sp"
+                        android:autoSizeMaxTextSize="14sp"
                         android:layout_below="@+id/user_email"
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="8dp"
@@ -347,92 +354,92 @@
                 android:padding="12dp"
                 tools:ignore="UnknownIdInLayout">
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:layout_margin="4dp"
-                    android:background="@drawable/rectangle_radius_12"
-                    android:orientation="vertical"
-                    android:padding="6dp">
+<!--                <RelativeLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="48dp"-->
+<!--                    android:layout_margin="4dp"-->
+<!--                    android:background="@drawable/rectangle_radius_12"-->
+<!--                    android:orientation="vertical"-->
+<!--                    android:padding="6dp">-->
 
-                    <ImageView
-                        android:id="@+id/setting_icon"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:layout_alignParentLeft="true"
-                        android:layout_centerVertical="true"
-                        android:src="@drawable/setting_profile" />
+<!--                    <ImageView-->
+<!--                        android:id="@+id/setting_icon"-->
+<!--                        android:layout_width="24dp"-->
+<!--                        android:layout_height="24dp"-->
+<!--                        android:layout_alignParentLeft="true"-->
+<!--                        android:layout_centerVertical="true"-->
+<!--                        android:src="@drawable/setting_profile" />-->
 
-                    <TextView
-                        android:id="@+id/setting"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginStart="8dp"
-                        android:layout_toEndOf="@+id/setting_icon"
-                        android:fontFamily="@font/montblanc_trial_regular"
-                        android:text="Setting"
-                        android:textStyle="bold" />
-                </RelativeLayout>
+<!--                    <TextView-->
+<!--                        android:id="@+id/setting"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_centerVertical="true"-->
+<!--                        android:layout_marginStart="8dp"-->
+<!--                        android:layout_toEndOf="@+id/setting_icon"-->
+<!--                        android:fontFamily="@font/montblanc_trial_regular"-->
+<!--                        android:text="Setting"-->
+<!--                        android:textStyle="bold" />-->
+<!--                </RelativeLayout>-->
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:layout_margin="4dp"
-                    android:background="@drawable/rectangle_radius_12"
-                    android:orientation="vertical"
-                    android:padding="6dp">
+<!--                <RelativeLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="48dp"-->
+<!--                    android:layout_margin="4dp"-->
+<!--                    android:background="@drawable/rectangle_radius_12"-->
+<!--                    android:orientation="vertical"-->
+<!--                    android:padding="6dp">-->
 
-                    <ImageView
-                        android:id="@+id/location_icon"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:layout_alignParentLeft="true"
-                        android:layout_centerVertical="true"
-                        android:src="@drawable/location_profile" />
-
-
-                    <TextView
-                        android:id="@+id/location"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginStart="8dp"
-                        android:layout_toEndOf="@+id/location_icon"
-                        android:fontFamily="@font/montblanc_trial_regular"
-                        android:text="Location"
-                        android:textStyle="bold" />
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:layout_margin="4dp"
-                    android:background="@drawable/rectangle_radius_12"
-                    android:orientation="vertical"
-                    android:padding="6dp">
-
-                    <ImageView
-                        android:id="@+id/question_icon"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:layout_alignParentLeft="true"
-                        android:layout_centerVertical="true"
-                        android:src="@drawable/question_profile" />
+<!--                    <ImageView-->
+<!--                        android:id="@+id/location_icon"-->
+<!--                        android:layout_width="24dp"-->
+<!--                        android:layout_height="24dp"-->
+<!--                        android:layout_alignParentLeft="true"-->
+<!--                        android:layout_centerVertical="true"-->
+<!--                        android:src="@drawable/location_profile" />-->
 
 
-                    <TextView
-                        android:id="@+id/question"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginStart="8dp"
-                        android:layout_toEndOf="@+id/question_icon"
-                        android:fontFamily="@font/montblanc_trial_regular"
-                        android:text="Question"
-                        android:textStyle="bold" />
-                </RelativeLayout>
+<!--                    <TextView-->
+<!--                        android:id="@+id/location"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_centerVertical="true"-->
+<!--                        android:layout_marginStart="8dp"-->
+<!--                        android:layout_toEndOf="@+id/location_icon"-->
+<!--                        android:fontFamily="@font/montblanc_trial_regular"-->
+<!--                        android:text="Location"-->
+<!--                        android:textStyle="bold" />-->
+
+<!--                </RelativeLayout>-->
+
+<!--                <RelativeLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="48dp"-->
+<!--                    android:layout_margin="4dp"-->
+<!--                    android:background="@drawable/rectangle_radius_12"-->
+<!--                    android:orientation="vertical"-->
+<!--                    android:padding="6dp">-->
+
+<!--                    <ImageView-->
+<!--                        android:id="@+id/question_icon"-->
+<!--                        android:layout_width="24dp"-->
+<!--                        android:layout_height="24dp"-->
+<!--                        android:layout_alignParentLeft="true"-->
+<!--                        android:layout_centerVertical="true"-->
+<!--                        android:src="@drawable/question_profile" />-->
+
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/question"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_centerVertical="true"-->
+<!--                        android:layout_marginStart="8dp"-->
+<!--                        android:layout_toEndOf="@+id/question_icon"-->
+<!--                        android:fontFamily="@font/montblanc_trial_regular"-->
+<!--                        android:text="Question"-->
+<!--                        android:textStyle="bold" />-->
+<!--                </RelativeLayout>-->
 
                 <RelativeLayout
                     android:id="@+id/ll_exit"

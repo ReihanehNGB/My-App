@@ -33,19 +33,6 @@
             tools:ignore="MissingConstraints">
 
             <ImageView
-                android:id="@+id/menu"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:background="@drawable/ellipse"
-                android:clickable="true"
-                android:focusable="true"
-                android:rotation="180"
-                android:src="@drawable/ic_menu"
-                app:layout_constraintEnd_toEndOf="parent"
-                tools:ignore="MissingConstraints" />
-
-
-            <ImageView
                 android:id="@+id/ic_search"
                 android:layout_width="32dp"
                 android:layout_height="32dp"

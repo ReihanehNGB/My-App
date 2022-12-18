@@ -40,6 +40,21 @@ class ProductListActivity : AppCompatActivity(), RecyclerAdapterListener {
 
         val value = intent.extras?.getString("Key")
 
+        observe()
+
+
+
+
+        productListActivityVM.listCateProducts("api/v1/categories/$value/products")
+
+        binding.icBack.setOnClickListener {
+            finish()
+        }
+
+
+    }
+
+    private fun observe(){
         productListActivityVM.homeLiveDataP.observe(this){
             when (it) {
                 is NetworkResult.Loading -> {
@@ -47,6 +62,7 @@ class ProductListActivity : AppCompatActivity(), RecyclerAdapterListener {
 
                 }
                 is NetworkResult.Success -> {
+                    var vat = it.data
                     createRecyclerListProduct(it.data)
                     binding.progressBar.visibility = View.GONE
 
@@ -63,14 +79,6 @@ class ProductListActivity : AppCompatActivity(), RecyclerAdapterListener {
             }//close when
 
         }//close observe
-
-        productListActivityVM.listCateProducts("api/v1/categories/$value/products")
-
-        binding.icBack.setOnClickListener {
-            finish()
-        }
-
-
     }
 
 
