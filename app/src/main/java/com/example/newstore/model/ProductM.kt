@@ -28,6 +28,13 @@ data class ProductM(
             notifyPropertyChanged(BR.state)
         }
 
+    @Bindable
+    var stateFavt: Boolean = false
+        set(value) {
+            field = value
+            notifyPropertyChanged(BR.stateFavt)
+        }
+
 
 
 

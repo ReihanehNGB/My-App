@@ -25,16 +25,14 @@
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:layout_margin="8dp"
-      android:progressDrawable="@drawable/loading2"
       tools:context=".ui.details.ProductDetailsActivity">
 
-    <pl.droidsonroids.gif.GifImageView
+    <ProgressBar
         android:id="@+id/progressBar_detail"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/loading2"
+        android:layout_height="wrap_content"
         android:visibility="gone"
-        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
         android:elevation="2dp"
         tools:ignore="MissingClass" />
 

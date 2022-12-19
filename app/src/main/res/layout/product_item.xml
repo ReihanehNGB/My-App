@@ -114,7 +114,7 @@
                     android:layout_height="24dp"
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="16dp"
-                    android:src="@{stateFav == `true` ? @drawable/ic_clicked_fav_item : @drawable/ic_fav}"
+                    android:src="@{product.stateFavt == true ? @drawable/ic_clicked_fav_item : @drawable/ic_fav}"
                     android:background="?attr/selectableItemBackgroundBorderless"
                     android:focusable="true"
                     android:clickable="true"

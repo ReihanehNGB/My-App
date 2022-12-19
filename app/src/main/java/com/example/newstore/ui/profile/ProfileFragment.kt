@@ -58,8 +58,10 @@ class ProfileFragment : Fragment() {
 
         binding.llExit.setOnClickListener {
             binding.rl.visibility = View.GONE
-            binding.ivProfile.visibility = View.GONE
+            binding.cvProfile.visibility = View.GONE
+            binding.loginAnimation.visibility = View.VISIBLE
             binding.btnSignIn.visibility = View.VISIBLE
+            binding.btnSignUp.visibility = View.VISIBLE
         }
         binding.btnSignIn.setOnClickListener{
             MUtils.deleteUser(requireContext(), "Is Login", null)

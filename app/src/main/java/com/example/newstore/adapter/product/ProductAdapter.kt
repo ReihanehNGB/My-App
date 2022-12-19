@@ -23,7 +23,6 @@ class ProductAdapter(
     private val state: ProductState,
     private val recyclerAdapterListener: RecyclerAdapterListener?
 ) : BaseRecyclerAdapter<ProductM?>(context, list) {
-    var stateFavorite :String = "false"
 
     override fun getRootLayoutId(): Int {
         return when (state) {
@@ -39,38 +38,25 @@ class ProductAdapter(
 
     override fun onBind(viewHolder: BaseViewHolder, position: Int) {
         val productModel = viewHolder.getData(position) as ProductM
-        var x = false
         when (state) {
             is ProductState.Item -> {
                 val itemBinding = viewHolder.binding as ProductItemBinding
-
                 itemBinding.cvProduct.setOnClickListener {
                     context.startActivity(
                         Intent(context, ProductDetailsActivity::class.java)
-                            .putExtra("singleP", productModel.id.toString())
-                    )
+                            .putExtra("singleP", productModel.id.toString()))
                 }
                 itemBinding.icFavorite.setOnClickListener {
-                    if (stateFavorite =="false"){
-                        stateFavorite = "true"
-                        itemBinding.stateFav= stateFavorite
+                    if (productModel.stateFavt){
+                        productModel.stateFavt = false
                         recyclerAdapterListener?.updateFav(productModel)
                     }else{
-                        stateFavorite = "false"
-                        itemBinding.stateFav= stateFavorite
+                        productModel.stateFavt = true
                         recyclerAdapterListener?.updateFav(productModel)
                     }
-
-
-//                    itemBinding.icFavorite.setOnClickListener {
-//                            itemBinding.stateFav= "false"
-//                            recyclerAdapterListener?.updateFav(productModel)
-//                    }
                 }
-
                 itemBinding.product = productModel
             }
-
             is ProductState.Search -> {
                 val searchBinding = viewHolder.binding as ProductItemSearchBinding
                 searchBinding.cvProduct.setOnClickListener {
@@ -91,26 +77,22 @@ class ProductAdapter(
                 favoriteBinding.product = productModel
 
                 favoriteBinding.delete.setOnClickListener {
+                    productModel.stateFavt = false
                     recyclerAdapterListener?.updateFav(productModel)
                 }
-
                 favoriteBinding.swipe.setShowMode(SwipeLayout.ShowMode.LayDown)
                 favoriteBinding.swipe.addDrag(SwipeLayout.DragEdge.Left, favoriteBinding.bottomWrapper)
-
                 favoriteBinding.swipe.addSwipeListener(object : SwipeListener {
                     override fun onClose(layout: SwipeLayout) {
                         //when the SurfaceView totally cover the BottomView.
                     }
-
                     override fun onUpdate(layout: SwipeLayout, leftOffset: Int, topOffset: Int) {
                         //you are swiping.
                     }
-
                     override fun onStartOpen(layout: SwipeLayout) {}
                     override fun onOpen(layout: SwipeLayout) {
                         //when the BottomView totally show.
                     }
-
                     override fun onStartClose(layout: SwipeLayout) {}
                     override fun onHandRelease(layout: SwipeLayout, xvel: Float, yvel: Float) {
                         //when user's hand released.
@@ -121,7 +103,6 @@ class ProductAdapter(
             is ProductState.Cart -> {
                 val cartBinding = viewHolder.binding as ProductItemCartBinding
                 cartBinding.tvNumber.text = itemCount.toString()
-
                 cartBinding.ivMinus.setOnClickListener {
                     if (productModel.numbers > 1) {
                         productModel.numbers--

@@ -73,6 +73,8 @@ class LoginActivity : AppCompatActivity() {
     }
 
     fun checkUserPass(view: View) {
+        binding.btnLogin.visibility = View.GONE
+        binding.loadingLogin.visibility = View.VISIBLE
         userList.forEach {
             if (it.name == (binding.etEmail.text.toString()) && it.password == (binding.etPassword.text.toString())) {
                 MUtils.saveStateLogin(this,"Is Login",true)
