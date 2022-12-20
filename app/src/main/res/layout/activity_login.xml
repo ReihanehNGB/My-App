@@ -25,8 +25,7 @@
             android:padding="10dp"
             android:background="#A8FF0000"
             android:visibility="gone"
-            android:text="InCurrent Password or Email !!!
-            Pleas try again..."/>
+            android:text="@string/error"/>
 
         <ImageView
             android:layout_width="match_parent"
@@ -125,7 +124,7 @@
             android:layout_alignParentEnd="true"
             android:layout_marginTop="24dp"
             android:padding="12dp"
-            android:onClick="@{presenter::skeep}"
+            android:onClick="@{presenter::skip}"
             android:text="Skeep " />
 
         <TextView

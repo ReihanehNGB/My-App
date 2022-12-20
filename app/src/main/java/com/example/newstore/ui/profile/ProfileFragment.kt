@@ -52,19 +52,9 @@ class ProfileFragment : Fragment() {
         activity?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
         activity?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
 
-
-
         observe()
 
-        binding.llExit.setOnClickListener {
-            binding.rl.visibility = View.GONE
-            binding.cvProfile.visibility = View.GONE
-            binding.loginAnimation.visibility = View.VISIBLE
-            binding.btnSignIn.visibility = View.VISIBLE
-            binding.btnSignUp.visibility = View.VISIBLE
-        }
         binding.btnSignIn.setOnClickListener{
-            MUtils.deleteUser(requireContext(), "Is Login", null)
             val intent = Intent(context, LoginActivity::class.java)
             startActivity(intent)
         }
@@ -76,11 +66,6 @@ class ProfileFragment : Fragment() {
 
 
         profileVM.allUser()
-
-
-
-
-
 
 
         profileVM.profLiveDataU.observe(viewLifecycleOwner) {
@@ -106,6 +91,15 @@ class ProfileFragment : Fragment() {
 
     }
 
+    fun exit(view: View){
+        binding.rl.visibility = View.GONE
+        binding.cvProfile.visibility = View.GONE
+        binding.loginAnimation.visibility = View.VISIBLE
+        binding.btnSignIn.visibility = View.VISIBLE
+        binding.btnSignUp.visibility = View.VISIBLE
+        MUtils.deleteUser(requireContext(), "Is Login", null)
+    }
+
     private fun checkLoginUser(lUserModel: MutableList<UserM>){
         val stateLogin = MUtils.checkLogin(requireContext(),"Is Login")
 
@@ -113,7 +107,10 @@ class ProfileFragment : Fragment() {
             createProfile(lUserModel)
         }else{
             binding.rl.visibility = View.GONE
+            binding.cvProfile.visibility = View.GONE
+            binding.btnSignUp.visibility = View.VISIBLE
             binding.btnSignIn.visibility = View.VISIBLE
+            binding.loginAnimation.visibility = View.VISIBLE
         }
 
     }

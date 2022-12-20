@@ -43,7 +43,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="fitXY"
-                    app:imageUrl="@{product.images[2]}"
+                    app:imageUrl="@{product.images[0]}"
                     />
             </androidx.cardview.widget.CardView>
 
@@ -89,19 +89,18 @@
 
                     <RelativeLayout
                         android:layout_width="64dp"
-                        android:layout_height="32dp"
+                        android:layout_height="40dp"
                         android:layout_centerVertical="true"
                         android:layout_alignParentRight="true"
-                        android:background="@drawable/border">
+                        android:background="@drawable/border"
+                        android:backgroundTint="#46B4CCC6">
 
 
                         <ImageView
                             android:id="@+id/iv_minus"
                             android:layout_width="24dp"
                             android:layout_height="24dp"
-                            android:layout_gravity="start"
-                            android:gravity="center"
-                            android:paddingTop="10dp"
+                            android:layout_centerVertical="true"
                             android:layout_alignParentLeft="true"
                             android:src="@drawable/ic_minus" />
 
@@ -121,8 +120,7 @@
                             android:layout_height="24dp"
                             android:layout_gravity="end"
                             android:layout_alignParentRight="true"
-                            android:gravity="center"
-                            android:paddingTop="10dp"
+                            android:layout_centerVertical="true"
                             android:src="@drawable/ic_plus" />
 
                     </RelativeLayout>

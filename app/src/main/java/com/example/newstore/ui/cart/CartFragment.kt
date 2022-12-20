@@ -81,7 +81,6 @@ class CartFragment : Fragment(), RecyclerAdapterListener {//close class
     }
 
     fun updateList(productModelC: ProductM) {
-        binding.emptyBasket.visibility = View.GONE
         val context = requireContext()
         if (addCartProduct.contains(productModelC)) {
             Toast.makeText(
@@ -114,10 +113,9 @@ class CartFragment : Fragment(), RecyclerAdapterListener {//close class
 
     fun createRecyclerView(l: MutableList<ProductM>) {
             adapterCart = ProductAdapter(requireContext(), l, ProductState.Cart, this)
+            binding.emptyBasket.visibility = View.GONE
             binding.rvProductCart.layoutManager = LinearLayoutManager(requireContext())
             binding.rvProductCart.adapter = adapterCart
-
-
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
@@ -128,7 +126,6 @@ class CartFragment : Fragment(), RecyclerAdapterListener {//close class
 
     fun deletSlc(productModel: ProductM,number: Int){
         if (number==0){
-            binding.emptyBasket.visibility = View.VISIBLE
             addCartProduct.remove(productModel)
             createRecyclerView(addCartProduct)
         }

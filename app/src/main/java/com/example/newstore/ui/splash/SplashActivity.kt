@@ -28,7 +28,7 @@ class SplashActivity : AppCompatActivity() {
             val mainIntent = Intent(this, LoginActivity::class.java)
             startActivity(mainIntent)
             finish()
-        }, 1000)
+        }, 5000)
     }
 
     fun initBinding(layout: Int) {

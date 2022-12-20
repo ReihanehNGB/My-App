@@ -22,7 +22,6 @@
             android:gravity="center"
             android:src="@drawable/test_logo"
             android:layout_gravity="center"
-
             android:layout_marginBottom="64dp"
             tools:ignore="MissingConstraints" />
 

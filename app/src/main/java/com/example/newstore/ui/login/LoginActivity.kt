@@ -26,20 +26,20 @@ class LoginActivity : AppCompatActivity() {
     private val loginVM: LoginVM by viewModels()
     var error: String = ""
     var userList: MutableList<UserM> = ArrayList()
+    var temp = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initBinding(R.layout.activity_login)
-
+        observe()
         checkLoginUser()
         loginVM.listUser()
-        observe()
 
 
     }
 
 
-    fun observe(){
+    fun observe() {
         loginVM.loginLiveData.observe(this) {
 
             when (it) {
@@ -62,9 +62,9 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    private fun checkLoginUser(){
-        val stateLogin = MUtils.checkLogin(this,"Is Login")
-        if (stateLogin){
+    private fun checkLoginUser() {
+        val stateLogin = MUtils.checkLogin(this, "Is Login")
+        if (stateLogin) {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
@@ -73,25 +73,22 @@ class LoginActivity : AppCompatActivity() {
     }
 
     fun checkUserPass(view: View) {
-        binding.btnLogin.visibility = View.GONE
-        binding.loadingLogin.visibility = View.VISIBLE
-        userList.forEach {
-            if (it.name == (binding.etEmail.text.toString()) && it.password == (binding.etPassword.text.toString())) {
-                MUtils.saveStateLogin(this,"Is Login",true)
-                MUtils.saveToShared(this, "SingleU", it.id)
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
-                finish()
-            }//close if
-            else {
-                vibrate(500)
-                binding.tvError.visibility = View.VISIBLE
-                Handler(Looper.getMainLooper()).postDelayed({
-                    binding.etEmail.setText("")
-                    binding.etPassword.setText("")
-                    binding.tvError.visibility = View.GONE
-                }, 3000)
-            }
+        val name = binding.etEmail.text.toString()
+        val pass = binding.etPassword.text.toString()
+        userList.find { it.name == name && it.password == pass}?.let {
+            MUtils.saveStateLogin(this, "Is Login", true)
+            MUtils.saveToShared(this, "SingleU", it.id)
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }?: run{
+            vibrate(500)
+            binding.tvError.visibility = View.VISIBLE
+            Handler(Looper.getMainLooper()).postDelayed({
+                binding.etEmail.setText("")
+                binding.etPassword.setText("")
+                binding.tvError.visibility = View.GONE
+            }, 3000)
         }
 
     }
@@ -103,7 +100,7 @@ class LoginActivity : AppCompatActivity() {
         finish()
     }
 
-    fun skeep(view: View){
+    fun skip(view: View) {
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
         finish()
@@ -114,8 +111,6 @@ class LoginActivity : AppCompatActivity() {
         binding.presenter = this
 
     }//close init
-
-
 
 
 }

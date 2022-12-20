@@ -46,6 +46,7 @@
             android:layout_height="144dp"
             android:orientation="vertical">
 
+
             <ImageView
                 android:id="@+id/iv_product"
                 android:layout_width="match_parent"
@@ -73,6 +74,20 @@
                 android:textColor="#fff"
                 android:textSize="12sp"
                 android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/ic_favorite"
+                android:layout_width="32dp"
+                android:layout_height="24dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="12dp"
+                android:src="@{product.stateFavt == true ? @drawable/ic_clicked_fav_item : @drawable/ic_fav}"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:focusable="true"
+                android:clickable="true"
+                android:layout_marginTop="6dp"
+
+                />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -107,20 +122,6 @@
                         android:textColor="#FFFFFF" />
                 </LinearLayout>
 
-
-                <ImageView
-                    android:id="@+id/ic_favorite"
-                    android:layout_width="32dp"
-                    android:layout_height="24dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="16dp"
-                    android:src="@{product.stateFavt == true ? @drawable/ic_clicked_fav_item : @drawable/ic_fav}"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:focusable="true"
-                    android:clickable="true"
-                    android:layout_marginTop="6dp"
-
-                    />
 
 
                 <!--<TextView
