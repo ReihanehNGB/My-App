@@ -5,8 +5,10 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.View
+import android.view.Window
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import com.example.newstore.R
 import com.example.newstore.databinding.ActivityLoginBinding
@@ -28,9 +30,15 @@ class LoginActivity : AppCompatActivity() {
     var userList: MutableList<UserM> = ArrayList()
     var temp = false
 
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initBinding(R.layout.activity_login)
+
+        window.statusBarColor = ContextCompat.getColor(this, R.color.status_bar)
+
         observe()
         checkLoginUser()
         loginVM.listUser()

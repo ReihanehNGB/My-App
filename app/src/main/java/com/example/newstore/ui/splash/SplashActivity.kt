@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import com.example.newstore.R
 import com.example.newstore.databinding.ActivityLoginBinding
@@ -21,14 +22,14 @@ class SplashActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         initBinding(R.layout.activity_splash)
+        window.statusBarColor = ContextCompat.getColor(this, R.color.status_bar)
 
         Handler(Looper.getMainLooper()).postDelayed({
             val mainIntent = Intent(this, LoginActivity::class.java)
             startActivity(mainIntent)
             finish()
-        }, 5000)
+        }, 3000)
     }
 
     fun initBinding(layout: Int) {

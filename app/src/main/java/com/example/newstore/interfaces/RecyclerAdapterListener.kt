@@ -10,8 +10,8 @@ interface RecyclerAdapterListener {
 
     fun updateSlc(productModel: ProductM,number: Int)
 
-    fun type(name:String){
-    }
+    fun type(name:String)
+
 
 
 }

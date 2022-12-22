@@ -117,7 +117,6 @@ class HomeFragment : Fragment(), RecyclerAdapterListener {
     }
 
     private fun filterCate(l: MutableList<ProductM>, nameClick: String) {
-        l.forEach { it ->
             if (nameClick == "All Product") {
                 createRecyclerProduct(l)
             } else {
@@ -126,7 +125,7 @@ class HomeFragment : Fragment(), RecyclerAdapterListener {
                 createRecyclerProduct(sorted)
             }
 
-        }
+
     }
 
     private fun createRecyclerProduct(productList: MutableList<ProductM>) {

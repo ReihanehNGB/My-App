@@ -12,4 +12,5 @@
     <color name="transparent">#00FFFFFF</color>
     <color name="pastel_blue">#DBE5EA</color>
     <color name="red" >#FF0000</color>
+    <color name="status_bar" >#1071848C</color>
 </resources>

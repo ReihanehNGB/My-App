@@ -125,37 +125,35 @@
             android:layout_marginTop="24dp"
             android:padding="12dp"
             android:onClick="@{presenter::skip}"
-            android:text="Skeep " />
+            android:text="Skip " />
 
-        <TextView
-            android:id="@+id/ques_signIn"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="12dp"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="24dp"
-            android:autoSizeMaxTextSize="12sp"
-            android:autoSizeMinTextSize="10sp"
-            android:autoSizeTextType="uniform"
-            android:fontFamily="@font/montblanc_trial_regular"
-            android:paddingBottom="12dp"
-            android:text="Do you not have an account? " />
+            >
+            <TextView
+                android:id="@+id/ques_signIn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montblanc_trial_regular"
+                android:text="Do you not have an account? " />
 
-        <TextView
-            android:id="@+id/signUp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginTop="24dp"
-            android:autoSizeTextType="uniform"
-            android:autoSizeMinTextSize="12sp"
-            android:autoSizeMaxTextSize="14sp"
-            android:layout_toEndOf="@+id/ques_signIn"
-            android:fontFamily="@font/montblanc_trial_bold"
-            android:onClick="@{presenter::signUp}"
-            android:paddingBottom="12dp"
-            android:text="Sign Up "
-            android:textColor="@color/teal_200" />
+            <TextView
+                android:id="@+id/signUp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montblanc_trial_bold"
+                android:onClick="@{presenter::signUp}"
+                android:text="Sign Up "
+                android:layout_marginStart="2dp"
+                android:textColor="@color/teal_200" />
+        </LinearLayout>
+
+
 
 
     </RelativeLayout>
